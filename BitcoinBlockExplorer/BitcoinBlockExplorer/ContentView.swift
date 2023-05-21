@@ -14,12 +14,13 @@ struct ContentView: View {
       Home().tabItem {
         Label("Home", systemImage: "house")
       }
-//      EveryBlocks().tabItem {
-//        Label("Blocos", systemImage: "cube")
-//      }
+      EveryBlocks().tabItem {
+        Label("Blocos", systemImage: "cube")
+      }
       EveryTransactions().tabItem {
         Label("Transações", systemImage: "rectangle.grid.1x2.fill")
       }
+      
     }.accentColor(Color("laranja"))
     
   }

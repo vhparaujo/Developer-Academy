@@ -12,6 +12,7 @@ struct Transactions: Hashable, Codable {
   let size: Int32
   let fee: Double
   let vin: [Vin]
+  let vout: [Vout]
   let status: Status
   
 }
@@ -26,8 +27,8 @@ struct Prevout: Hashable, Codable {
 }
 
 struct Vout: Hashable, Codable {
-  let scriptpubkey_address: String
-  let value: Int64
+  let scriptpubkey_address: String?
+  let value: Double
 }
 
 struct Status: Hashable, Codable {

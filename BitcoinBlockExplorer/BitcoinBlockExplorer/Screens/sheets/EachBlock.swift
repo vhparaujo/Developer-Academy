@@ -119,10 +119,62 @@ struct EachBlock: View{
                 Text("\(blocksT.status.formatTime(blocksT.status.block_time))").foregroundColor(Color("cinza")).font(.system(size: 12))
               }.padding()
               
-//              VStack{
-//                Text("\(blocksT.vin[0].prevout.scriptpubkey_address)").foregroundColor(Color("cinza")).font(.system(size: 12))
-//                Text("\(blocksT.vin[0].prevout.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
-//              }
+              
+              HStack{
+                VStack{
+                  ForEach(blocksT.vin, id: \.self) { vin in
+                    if let prevoutDesembrulhado: Prevout = vin.prevout {
+                      Text(prevoutDesembrulhado.scriptpubkey_address).foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    } else {
+                      Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    }
+                  }
+                }
+                
+//                VStack {
+//                    ForEach(blocksT.vout.indices, id: \.self) { index in
+//                        if let voutDesembrulhado = blocksT.vout[index] {
+//                            Text(voutDesembrulhado.scriptpubkey_address)
+//                                .foregroundColor(Color("cinza"))
+//                                .font(.system(size: 12))
+//                            Text("\(voutDesembrulhado.value / 100000000) BTC")
+//                                .foregroundColor(Color("cinza"))
+//                                .font(.system(size: 12))
+//                        } else {
+//                            Text("Coinbase")
+//                                .foregroundColor(Color("cinza"))
+//                                .font(.system(size: 12))
+//                        }
+//                    }
+//                }
+                
+                VStack {
+                    ForEach(blocksT.vout.indices, id: \.self) { index in
+                        if let scriptpubkey_address = blocksT.vout[index].scriptpubkey_address {
+                            Text(scriptpubkey_address)
+                                .foregroundColor(Color("cinza"))
+                                .font(.system(size: 12))
+                        } else {
+                            Text("Coinbase")
+                                .foregroundColor(Color("cinza"))
+                                .font(.system(size: 12))
+                        }
+                        
+                         
+                            Text("\(blocksT.vout[index].value / 100000000) BTC")
+                                .foregroundColor(Color("cinza"))
+                                .font(.system(size: 12))
+                        
+                    }
+                }
+
+
+
+                
+                
+              }
+              
               
             }
           }

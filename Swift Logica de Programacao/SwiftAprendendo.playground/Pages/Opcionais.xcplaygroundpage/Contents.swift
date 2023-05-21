@@ -7,10 +7,11 @@ nome = "Victor"
 print(nome) //Optional("victor")
 
 // primeira forma de tratar o Optional, ! diz que tem um valor
-print(nome!)
+//print(nome!)
 
 if let nomeDesembrulhado = nome {
     print(nomeDesembrulhado)
+    print("teste")
 } else {
-    print("valor nulo")
+    print("")
 }
