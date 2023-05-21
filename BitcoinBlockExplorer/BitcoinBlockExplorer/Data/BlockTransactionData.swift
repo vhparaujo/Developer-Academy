@@ -22,11 +22,11 @@ class BlockTransactionsData: ObservableObject {
       }
       
       do {
-        var blockTransaction = try JSONDecoder().decode([Transactions].self, from: data)
+        let blockTransaction = try JSONDecoder().decode([Transactions].self, from: data)
         DispatchQueue.main.async {
           self.blockTransactionsData = blockTransaction
         }
-        blockTransaction.removeFirst(2)
+        
       }
       catch let error {
         print(error)

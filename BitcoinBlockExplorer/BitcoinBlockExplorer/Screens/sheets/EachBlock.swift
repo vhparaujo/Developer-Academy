@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct EachBlock: View{
-
-  @Binding var abrirModal: Bool
+  @Binding var timestamp: String
+  @Binding var numberTransactions: Int64
+  @Binding var blockMiner: String
+  @Binding var medianFee: Double
+  @Binding var blockSize: Double
   @Binding var hashBlock: String
   @Binding var heightBlock: Int
-  @StateObject var blockData = BlockDataHome()
+  @Binding var abrirModal: Bool
   @StateObject var blockTransactionData = BlockTransactionsData()
   
   var body: some View {
@@ -24,7 +27,7 @@ struct EachBlock: View{
           
         
           Button{
-            print(blockData)
+            abrirModal.toggle()
           } label: {
             Circle()
               .fill()
@@ -37,7 +40,6 @@ struct EachBlock: View{
           
         }
         
-        ForEach(blockData.blockDatas, id: \.self) { blocks in
           HStack{
             ZStack{
               RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
@@ -65,7 +67,7 @@ struct EachBlock: View{
               HStack{
                 Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: 30)
                 Spacer()
-                Text("\(blocks.formatTimestampWithHour(blocks.timestamp))").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
+                Text("\(timestamp)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
                
               }
               
@@ -73,14 +75,14 @@ struct EachBlock: View{
               
               HStack{
                 Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: -68)
-                Text("\(blocks.size)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 68)
+                Text("\(blockSize)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 68)
               }
               
               Divider().frame(width: 350)
               
               HStack{
                 Text("Taxa mediana").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: -75)
-                Text("\(blocks.extras.medianFee)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 75)
+                Text("\(medianFee)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 75)
               }
               
               Divider().frame(width: 350)
@@ -88,20 +90,21 @@ struct EachBlock: View{
               HStack{
                 Text("Minerador").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: 30)
                 Spacer()
-                Text("\(blocks.extras.pool.name)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
+                Text("\(blockMiner)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
               }
               
             }
-          }
           
-          HStack{
-            Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 15))
-            Spacer()
-            Image(systemName: "chevron.left").foregroundColor(Color("cinza"))
-            Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
-            
-          }.padding()
+          
         }
+        
+        HStack{
+          Text("\(numberTransactions) transações").foregroundColor(Color("cinza")).font(.system(size: 15))
+          Spacer()
+          Image(systemName: "chevron.left").foregroundColor(Color("cinza"))
+          Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
+          
+        }.padding()
         
         
         ForEach(blockTransactionData.blockTransactionsData, id: \.self) { blocksT in
@@ -127,9 +130,6 @@ struct EachBlock: View{
         
       }
     }.onAppear() {
-      blockData.fetch(1)
-//      transaction
-//        .getEachTransactionInfo()
       blockTransactionData.getEachBlocksInfo(hashBlock)
     }
     

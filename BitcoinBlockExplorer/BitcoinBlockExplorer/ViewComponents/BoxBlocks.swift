@@ -9,6 +9,11 @@ import SwiftUI
 
 struct BoxBlocks: View {
   
+  @State var timestamp: String = ""
+  @State var numberTransactions: Int64 = 0
+  @State var blockMiner: String = ""
+  @State var medianFee: Double = 0
+  @State var blockSize: Double = 0
   @State var heightBlock: Int = 0
   @State var hashBlock: String = ""
   @StateObject var blockData = BlockDataHome()
@@ -41,7 +46,11 @@ struct BoxBlocks: View {
             }.onTapGesture {
               hashBlock = blocks.id
               heightBlock = blocks.height
-              print("\(blocks.id)")
+              medianFee = blocks.extras.medianFee
+              blockSize = blocks.size
+              blockMiner = blocks.extras.pool.name
+              numberTransactions = blocks.tx_count
+              timestamp = blocks.formatTimestampWithHour(blocks.timestamp)
               abrirModal.toggle()
             }
           }
@@ -49,7 +58,7 @@ struct BoxBlocks: View {
         }
       }
     }.sheet(isPresented: $abrirModal) {
-      EachBlock(abrirModal: $abrirModal, hashBlock: $hashBlock, heightBlock: $heightBlock).presentationDetents([.height(650), .fraction(0.90)])
+      EachBlock(timestamp: $timestamp,numberTransactions: $numberTransactions, blockMiner: $blockMiner, medianFee: $medianFee, blockSize: $blockSize, hashBlock: $hashBlock, heightBlock: $heightBlock, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
         .presentationBackground(Color("azul"))
       }
     .onAppear() {
