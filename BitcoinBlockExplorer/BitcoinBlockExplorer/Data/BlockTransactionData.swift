@@ -8,11 +8,13 @@
 import SwiftUI
 
 class BlockTransactionsData: ObservableObject {
-  @Published var blockTransactionsData: [Transactions] = []
   
-  func getEachBlocksInfo() {
+  @Published var blockTransactionsData: [Transactions] = []
+  var hashBlock: String = ""
+  
+  func getEachBlocksInfo(_ hashBlock: String) {
     // todo: tentar trocar o hash do bloco
-    guard let url = URL(string: "https://mempool.space/api/block/000000000000000015dc777b3ff2611091336355d3f0ee9766a2cf3be8e4b1ce/txs") else { return }
+    guard let url = URL(string: "https://mempool.space/api/block/\(hashBlock)/txs") else { return }
     
     let task = URLSession.shared.dataTask(with: url) {data, _, error in
       guard let data = data, error == nil else {

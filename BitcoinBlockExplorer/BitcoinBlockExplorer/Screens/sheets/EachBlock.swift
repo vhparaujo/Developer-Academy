@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EachBlock: View{
+
+  @Binding var abrirModal: Bool
+  @Binding var hashBlock: String
+  @Binding var heightBlock: Int
   @StateObject var blockData = BlockDataHome()
   @StateObject var blockTransactionData = BlockTransactionsData()
-//  @StateObject var transaction = EachTransactionData()
-  @Binding var abrirModal: Bool
   
   var body: some View {
     VStack{
@@ -21,7 +23,9 @@ struct EachBlock: View{
           Text("Bloco").foregroundColor(Color("cinza")).offset(y: 15)
           
         
-            
+          Button{
+            print(blockData)
+          } label: {
             Circle()
               .fill()
               .foregroundColor(Color("cinza"))
@@ -29,6 +33,7 @@ struct EachBlock: View{
               .overlay() {
                 Text("X").clipShape(Circle())
               }
+          }
           
         }
         
@@ -38,7 +43,7 @@ struct EachBlock: View{
               RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
               HStack{
                 Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
-                Text("\(blocks.height)").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Text("\(heightBlock)").foregroundColor(Color("cinza")).font(.system(size: 15))
               }
             }
             
@@ -49,7 +54,7 @@ struct EachBlock: View{
             RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
             HStack{
               Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15))
-              Text("\(String(blocks.id.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+              Text("\(String(hashBlock.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
             }
           }
           
@@ -125,7 +130,7 @@ struct EachBlock: View{
       blockData.fetch(1)
 //      transaction
 //        .getEachTransactionInfo()
-      blockTransactionData.getEachBlocksInfo()
+      blockTransactionData.getEachBlocksInfo(hashBlock)
     }
     
     

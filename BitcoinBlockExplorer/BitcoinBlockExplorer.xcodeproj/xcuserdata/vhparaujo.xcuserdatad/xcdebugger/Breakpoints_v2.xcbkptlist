@@ -8,15 +8,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A901A5E8-2988-47E1-BABD-529B20963405"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BitcoinBlockExplorer/Data/BlockTransactionData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "getEachBlocksInfo()"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getEachBlocksInfo(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -109,6 +109,36 @@
                   endingLineNumber = "18"
                   offsetFromSymbolStart = "368">
                </Location>
+               <Location
+                  uuid = "A901A5E8-2988-47E1-BABD-529B20963405 - 12f48a94ccd680e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "A901A5E8-2988-47E1-BABD-529B20963405 - 4a7ef0080f37e5f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "316">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -116,15 +146,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "34ACE4A9-4CDA-4639-AEE2-75150D9ED26D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BitcoinBlockExplorer/Data/BlockTransactionData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "getEachBlocksInfo()"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "getEachBlocksInfo(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -172,6 +202,21 @@
                   endingLineNumber = "19"
                   offsetFromSymbolStart = "1256">
                </Location>
+               <Location
+                  uuid = "34ACE4A9-4CDA-4639-AEE2-75150D9ED26D - 4a7ef0080f37e515"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1200">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -179,15 +224,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "112EB0BC-DB7B-4536-BDC0-DCB63213E6F7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BitcoinBlockExplorer/Data/BlockTransactionData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "getEachBlocksInfo()"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getEachBlocksInfo(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -235,6 +280,21 @@
                   endingLineNumber = "30"
                   offsetFromSymbolStart = "1376">
                </Location>
+               <Location
+                  uuid = "112EB0BC-DB7B-4536-BDC0-DCB63213E6F7 - 4a7ef0080f37e788"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1320">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -248,10 +308,73 @@
             filePath = "BitcoinBlockExplorer/Data/BlockTransactionData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "getEachBlocksInfo()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getEachBlocksInfo(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A9E4673-1BB6-49F5-83E5-12D6FEEE6493"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "getEachBlocksInfo(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6A9E4673-1BB6-49F5-83E5-12D6FEEE6493 - 12f48a94ccd680a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "6A9E4673-1BB6-49F5-83E5-12D6FEEE6493 - 12f48a94ccd680a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  uuid = "6A9E4673-1BB6-49F5-83E5-12D6FEEE6493 - 12f48a94ccd680a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.BlockTransactionsData.getEachBlocksInfo(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/BlockTransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "904">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

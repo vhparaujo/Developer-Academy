@@ -17,7 +17,7 @@ struct Transactions: Hashable, Codable {
 }
 
 struct Vin: Hashable, Codable {
-  let prevout: Prevout
+  let prevout: Prevout?
 }
 
 struct Prevout: Hashable, Codable {

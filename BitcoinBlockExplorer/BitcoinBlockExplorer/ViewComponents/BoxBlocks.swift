@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BoxBlocks: View {
+  
+  @State var heightBlock: Int = 0
+  @State var hashBlock: String = ""
   @StateObject var blockData = BlockDataHome()
   @State var abrirModal: Bool = false
   let colunas = [GridItem(spacing: 5), GridItem(spacing: 5)]
@@ -35,13 +38,18 @@ struct BoxBlocks: View {
                 Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
                 Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
               }
+            }.onTapGesture {
+              hashBlock = blocks.id
+              heightBlock = blocks.height
+              print("\(blocks.id)")
+              abrirModal.toggle()
             }
           }
           
         }
       }
     }.sheet(isPresented: $abrirModal) {
-      EachBlock(abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
+      EachBlock(abrirModal: $abrirModal, hashBlock: $hashBlock, heightBlock: $heightBlock).presentationDetents([.height(650), .fraction(0.90)])
         .presentationBackground(Color("azul"))
       }
     .onAppear() {

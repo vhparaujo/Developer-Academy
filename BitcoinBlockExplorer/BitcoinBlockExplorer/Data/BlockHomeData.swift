@@ -9,6 +9,7 @@ import SwiftUI
 
 class BlockDataHome: ObservableObject {
   @Published var blockDatas: [Blocks] = []
+  @Published var blockHash: String = ""
   var maxBlockCount: Int = 0
   
   func fetch(_ maxBlockCount: Int) {

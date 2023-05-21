@@ -10,7 +10,7 @@ import SwiftUI
 struct Blocks: Hashable, Codable {
   let id: String
   let height: Int
-  let size : Double
+  let size: Double
   let tx_count: Int64
   let timestamp: TimeInterval
   let extras: Extras
