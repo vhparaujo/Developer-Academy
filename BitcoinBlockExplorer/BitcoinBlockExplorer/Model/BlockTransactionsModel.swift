@@ -33,10 +33,11 @@ struct Vout: Hashable, Codable {
 
 struct Status: Hashable, Codable {
   let confirmed: Bool
-  let block_height: Int64
-  let block_time: TimeInterval
+  let block_height: Int64?
+  let block_hash: String?
+  let block_time: TimeInterval?
   
-  func formatTime(_ block_time: TimeInterval) -> String {
+  func formatTime(_ block_time: TimeInterval) -> String? {
           let dateFormatter = DateFormatter()
           //dateFormatter.locale = Locale(identifier: "pt_BR")
           dateFormatter.dateFormat = "dd/MM/yyyy  HH:mm"

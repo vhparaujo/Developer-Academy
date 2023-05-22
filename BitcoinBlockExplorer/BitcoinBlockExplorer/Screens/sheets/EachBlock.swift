@@ -23,9 +23,10 @@ struct EachBlock: View{
       ScrollView{
         
         HStack{
-          Text("Bloco").foregroundColor(Color("cinza")).offset(y: 15)
+          Spacer()
+          Text("Bloco").foregroundColor(Color("cinza")).offset(x: 15, y: 15)
           
-          
+          Spacer()
           Button{
             abrirModal.toggle()
           } label: {
@@ -34,8 +35,8 @@ struct EachBlock: View{
               .foregroundColor(Color("cinza"))
               .frame(width: 30, height: 30)
               .overlay() {
-                Text("X").clipShape(Circle())
-              }
+                Text("X").clipShape(Circle()).font(.system(size: 20)).foregroundColor(Color("laranja"))
+              }.offset(x: -10, y: 15)
           }
           
         }
@@ -116,7 +117,13 @@ struct EachBlock: View{
                 Text("\(String(blocksT.txid.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 12))
                 Spacer()
                 
-                Text("\(blocksT.status.formatTime(blocksT.status.block_time))").foregroundColor(Color("cinza")).font(.system(size: 12))
+                
+                if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
+                    Text(formattedTime)
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
+                }
+                
               }.padding()
               
               

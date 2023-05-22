@@ -24,7 +24,6 @@
 		9B2BC8F82A1555BC00735A8D /* BlockDataEveryBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BC8F72A1555BC00735A8D /* BlockDataEveryBlocks.swift */; };
 		9B2BC8FD2A155C1F00735A8D /* EachBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BC8FC2A155C1F00735A8D /* EachBlock.swift */; };
 		9B4BE3642A17BBA000050C33 /* EachTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BE3632A17BBA000050C33 /* EachTransactionData.swift */; };
-		9B4BE3662A17BBF500050C33 /* EachTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4BE3652A17BBF500050C33 /* EachTransactionModel.swift */; };
 		9BC226122A0C68CA0069FDEB /* BitcoinBlockExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC226112A0C68CA0069FDEB /* BitcoinBlockExplorerApp.swift */; };
 		9BC226142A0C68CA0069FDEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC226132A0C68CA0069FDEB /* ContentView.swift */; };
 		9BC226162A0C68CB0069FDEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC226152A0C68CB0069FDEB /* Assets.xcassets */; };
@@ -49,7 +48,6 @@
 		9B2BC8F72A1555BC00735A8D /* BlockDataEveryBlocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDataEveryBlocks.swift; sourceTree = "<group>"; };
 		9B2BC8FC2A155C1F00735A8D /* EachBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachBlock.swift; sourceTree = "<group>"; };
 		9B4BE3632A17BBA000050C33 /* EachTransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTransactionData.swift; sourceTree = "<group>"; };
-		9B4BE3652A17BBF500050C33 /* EachTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTransactionModel.swift; sourceTree = "<group>"; };
 		9BC2260E2A0C68CA0069FDEB /* BitcoinBlockExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinBlockExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC226112A0C68CA0069FDEB /* BitcoinBlockExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinBlockExplorerApp.swift; sourceTree = "<group>"; };
 		9BC226132A0C68CA0069FDEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 				9B2BC8E12A12C54700735A8D /* BlockModel.swift */,
 				9B2BC8F52A1548F900735A8D /* EveryTransactionsModel.swift */,
 				9B12438A2A16BD6C00B9A4AF /* BlockTransactionsModel.swift */,
-				9B4BE3652A17BBF500050C33 /* EachTransactionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,7 +237,6 @@
 				9B12438D2A16C11C00B9A4AF /* BlockTransactionData.swift in Sources */,
 				9BC226142A0C68CA0069FDEB /* ContentView.swift in Sources */,
 				9B1243872A166AC000B9A4AF /* EachTransaction.swift in Sources */,
-				9B4BE3662A17BBF500050C33 /* EachTransactionModel.swift in Sources */,
 				9B2BC8F02A13F72A00735A8D /* EveryBlocks.swift in Sources */,
 				9B2BC8F22A13FE5900735A8D /* Home.swift in Sources */,
 				9B27E7162A12A8D000E8036E /* FeeModel.swift in Sources */,

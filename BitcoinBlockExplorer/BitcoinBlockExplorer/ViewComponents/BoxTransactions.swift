@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BoxTransactions: View {
   @StateObject var transactionData = TransactionData()
+  @State var idTransacao: String = ""
   @State var abrirModal: Bool = false
   
   var body: some View {
@@ -50,13 +51,17 @@ struct BoxTransactions: View {
                 
               }
             }
+          }.onTapGesture {
+            idTransacao = transactions.txid
+            print(transactions.txid)
+            abrirModal.toggle()
           }
         }
         
       }
     }
   }.sheet(isPresented: $abrirModal) {
-    EachTransaction(abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
+    EachTransaction(idTransacao: $idTransacao, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
       .presentationBackground(Color("azul"))
     }
     

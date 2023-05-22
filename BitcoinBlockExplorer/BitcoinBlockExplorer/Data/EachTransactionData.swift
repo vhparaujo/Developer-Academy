@@ -9,10 +9,11 @@ import SwiftUI
 
 class EachTransactionData: ObservableObject {
   @Published var eachTransactionDatas: [Transactions] = []
+  var txidTransaction: String = ""
   
-  func getEachTransactionInfo() {
+  func getEachTransactionInfo(_ txidTransaction: String) {
     
-    guard let url = URL(string: "https://mempool.space/api/tx/6506e89eacd62ddecd1ca9e97228800b0cf5dc143e91f7fdaace85b008f3eb57") else { return }
+    guard let url = URL(string: "https://mempool.space/api/tx/\(txidTransaction)") else { return }
     
     let task = URLSession.shared.dataTask(with: url) {data, _, error in
       guard let data = data, error == nil else {

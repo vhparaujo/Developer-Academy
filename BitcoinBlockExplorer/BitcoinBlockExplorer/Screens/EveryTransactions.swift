@@ -11,6 +11,7 @@ struct EveryTransactions: View {
   @StateObject var transactionData = TransactionData()
   @State var searchText = ""
   
+  
     var body: some View {
       NavigationStack{
         VStack{
