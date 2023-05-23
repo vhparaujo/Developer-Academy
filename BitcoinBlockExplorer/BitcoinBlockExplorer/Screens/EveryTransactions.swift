@@ -9,8 +9,6 @@ import SwiftUI
 
 struct EveryTransactions: View {
   @StateObject var transactionData = TransactionData()
-  @State var searchText = ""
-  
   
     var body: some View {
       NavigationStack{
@@ -21,7 +19,6 @@ struct EveryTransactions: View {
             
           }
         }
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
         .padding()
       
         .navigationBarTitleDisplayMode(.inline)

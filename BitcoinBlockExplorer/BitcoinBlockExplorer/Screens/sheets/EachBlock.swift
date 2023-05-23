@@ -46,7 +46,7 @@ struct EachBlock: View{
             RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
             HStack{
               Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
-              Text("\(heightBlock)").foregroundColor(Color("cinza")).font(.system(size: 15))
+              
             }
           }
           
@@ -119,9 +119,9 @@ struct EachBlock: View{
                 
                 
                 if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
-                    Text(formattedTime)
-                        .foregroundColor(Color("cinza"))
-                        .font(.system(size: 12))
+                  Text(formattedTime)
+                    .foregroundColor(Color("cinza"))
+                    .font(.system(size: 12))
                 }
                 
               }.padding()
@@ -169,7 +169,6 @@ struct EachBlock: View{
     }.onAppear() {
       blockTransactionData.getEachBlocksInfo(hashBlock)
     }
-    
     
   }
 }

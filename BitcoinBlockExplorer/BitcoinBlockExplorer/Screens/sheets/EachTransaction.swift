@@ -9,57 +9,64 @@ import SwiftUI
 
 struct EachTransaction: View {
   @StateObject var transaction = EachTransactionData()
-  @Binding var idTransacao: String
+  @Binding var idTransacaoButton: String
+  @Binding var idTransacaoSearch: String
   @Binding var abrirModal: Bool
   
   var body: some View {
     VStack{
       ScrollView{
         
-       HStack{
-         Spacer()
-         Text("Transação").foregroundColor(Color("cinza")).offset(x: 15, y: 15)
-         
-         Spacer()
-         Button{
-           abrirModal.toggle()
-         } label: {
-           Circle()
-             .fill()
-             .foregroundColor(Color("cinza"))
-             .frame(width: 30, height: 30)
-             .overlay() {
-               Text("X").clipShape(Circle()).font(.system(size: 20)).foregroundColor(Color("laranja"))
-             }.offset(x: -10, y: 15)
-         }
-         
-       }
+        HStack{
+          Spacer()
+          Text("Transação").foregroundColor(Color("cinza")).offset(x: 15, y: 15)
           
+          Spacer()
+          Button{
+            abrirModal.toggle()
+          } label: {
+            Circle()
+              .fill()
+              .foregroundColor(Color("cinza"))
+              .frame(width: 30, height: 30)
+              .overlay() {
+                Text("X").clipShape(Circle()).font(.system(size: 20)).foregroundColor(Color("laranja"))
+              }.offset(x: -10, y: 15)
+          }
+          
+        }
+        
         ZStack{
           RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
           HStack{
             Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
-            Text("\(String(idTransacao.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+            if(idTransacaoButton == "") {
+              Text("\(String(idTransacaoSearch.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+            } else {
+              Text("\(String(idTransacaoButton.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
           }
         }.offset(y: 25)
         
         ForEach(transaction.eachTransactionDatas, id: \.self) { transactions in
-        
+          
           HStack{
             
-        
-              HStack{
-                if let blockHeightDesembrulhado = transactions.status.block_height {
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
+            
+            HStack{
+              if let blockHeightDesembrulhado = transactions.status.block_height {
+                ZStack{
+                  RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
+                  HStack{
                     Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
                     Text("\(blockHeightDesembrulhado)").foregroundColor(Color("cinza")).font(.system(size: 15))
                   }
-                } else {
-                    
-                  }
+                }
+              } else {
                 
               }
+              
+            }
             
             
             Spacer()
@@ -154,25 +161,21 @@ struct EachTransaction: View {
                   }
                   
                 }
-
                 
               }
-            
-
-            
             
           }
         }
         
-        
-        
-    
       }
     }.onAppear() {
-      transaction.getEachTransactionInfo(idTransacao)
+      if idTransacaoButton == "" {
+        transaction.getEachTransactionInfo(idTransacaoSearch)
+        //print(idTransacaoSearch) teste
+      } else {
+        transaction.getEachTransactionInfo(idTransacaoButton)
+      }
     }
-    
     
   }
 }
-

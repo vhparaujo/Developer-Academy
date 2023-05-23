@@ -13,7 +13,7 @@ let texto: String = "20"
 
 // fazendo a conversao de String para Int
 if let i = Int(texto) {
-    print(i)
+    print(texto)
 } else {
     print("Nao foi possivel fazer a conversao de String para Int")
 }

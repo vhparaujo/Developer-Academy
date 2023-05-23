@@ -13,7 +13,7 @@ class BlockTransactionsData: ObservableObject {
   var hashBlock: String = ""
   
   func getEachBlocksInfo(_ hashBlock: String) {
-    // todo: tentar trocar o hash do bloco
+
     guard let url = URL(string: "https://mempool.space/api/block/\(hashBlock)/txs") else { return }
     
     let task = URLSession.shared.dataTask(with: url) {data, _, error in

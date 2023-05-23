@@ -18,7 +18,6 @@ struct EveryBlocks: View {
   @State var hashBlock: String = ""
   @StateObject var blockData = BlockDataEveryBlocks()
   @State var abrirModal: Bool = false
-  @State var searchText = ""
   let colunas = [GridItem(spacing: 5), GridItem(spacing: 5)]
   
   var body: some View {
@@ -62,7 +61,7 @@ struct EveryBlocks: View {
           
         }
       }
-      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
+      //      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
       .padding()
       
       .sheet(isPresented: $abrirModal) {

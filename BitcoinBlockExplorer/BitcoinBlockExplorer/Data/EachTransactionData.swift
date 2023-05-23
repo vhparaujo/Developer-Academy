@@ -13,6 +13,8 @@ class EachTransactionData: ObservableObject {
   
   func getEachTransactionInfo(_ txidTransaction: String) {
     
+    //print(txidTransaction) teste
+    
     guard let url = URL(string: "https://mempool.space/api/tx/\(txidTransaction)") else { return }
     
     let task = URLSession.shared.dataTask(with: url) {data, _, error in

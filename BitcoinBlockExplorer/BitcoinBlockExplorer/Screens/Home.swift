@@ -65,7 +65,7 @@ struct Home: View {
           
         }
       }
-      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
+//      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
       .padding()
       .onAppear {
         feeData.fetch()
