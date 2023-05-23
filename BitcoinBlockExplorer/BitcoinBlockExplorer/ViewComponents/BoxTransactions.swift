@@ -33,7 +33,7 @@ struct BoxTransactions: View {
                   Spacer()
                   Text("ID transação").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
                   Spacer()
-                  Text("\(String(transactions.txid.prefix(21)))").foregroundColor(Color("laranja")).font(.system(size: 12))
+                  Text("\(String(transactions.txid.prefix(21)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
                   Spacer()
                 }
                 VStack{

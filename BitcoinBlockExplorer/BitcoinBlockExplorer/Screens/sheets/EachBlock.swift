@@ -53,14 +53,18 @@ struct EachBlock: View{
           Spacer()
         }.padding()
         
-        ZStack{
-          RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
-          HStack{
-            Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15))
-            Text("\(String(hashBlock.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+        Button{
+          UIPasteboard.general.string = "\(hashBlock)"
+        } label: {
+          ZStack{
+            RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
+            HStack{
+              Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Text("\(String(hashBlock.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
           }
         }
-        
+
         ZStack{
           RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 192)
           VStack{

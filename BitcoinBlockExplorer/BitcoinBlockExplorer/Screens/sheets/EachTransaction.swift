@@ -38,18 +38,22 @@ struct EachTransaction: View {
         
         ZStack{
           RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
-          HStack{
-            Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
-            if(idTransacaoButton == "") {
-              Text("\(String(idTransacaoSearch.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
-            } else {
-              Text("\(String(idTransacaoButton.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 15))
+          Button {
+            UIPasteboard.general.string = "\(idTransacaoButton) \(idTransacaoSearch)"
+          } label: {
+            HStack{
+              Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
+              if(idTransacaoButton == "") {
+                Text("\(String(idTransacaoSearch.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+              } else {
+                Text("\(String(idTransacaoButton.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+              }
             }
           }
         }.offset(y: 25)
         
         ForEach(transaction.eachTransactionDatas, id: \.self) { transactions in
-            
+          
           HStack{
             
             
@@ -120,51 +124,49 @@ struct EachTransaction: View {
             Spacer()
           }.padding()
           
-          ZStack{
-            
-            RoundedRectangle(cornerRadius: 7).fill()
-              .foregroundColor(Color("caixas"))
-              .frame(width: 358,height: 192)
-              .overlay() {
-                HStack{
-                  VStack{
-                    ForEach(transactions.vin, id: \.self) { vin in
-                      if let prevoutDesembrulhado: Prevout = vin.prevout {
-                        Text(prevoutDesembrulhado.scriptpubkey_address).foregroundColor(Color("laranja")).font(.system(size: 12))
-                        Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
-                      } else {
-                        Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
-                      }
+          RoundedRectangle(cornerRadius: 7).fill()
+            .foregroundColor(Color("caixas"))
+            .frame(width: 358,height: 192)
+            .overlay() {
+              HStack{
+                VStack{
+                  ForEach(transactions.vin, id: \.self) { vin in
+                    if let prevoutDesembrulhado: Prevout = vin.prevout {
+                      Text(prevoutDesembrulhado.scriptpubkey_address).foregroundColor(Color("laranja")).font(.system(size: 12))
+                      Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    } else {
+                      Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
                     }
                   }
-                  
-                  Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
-                  
-                  VStack {
-                    ForEach(transactions.vout.indices, id: \.self) { index in
-                      if let scriptpubkey_address = transactions.vout[index].scriptpubkey_address {
-                        Text(scriptpubkey_address)
-                          .foregroundColor(Color("cinza"))
-                          .font(.system(size: 12))
-                      } else {
-                        Text("Coinbase")
-                          .foregroundColor(Color("cinza"))
-                          .font(.system(size: 12))
-                      }
-                      
-                      
-                      Text("\(transactions.vout[index].value / 100000000) BTC")
+                }
+                
+                Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
+                
+                VStack {
+                  ForEach(transactions.vout.indices, id: \.self) { index in
+                    if let scriptpubkey_address = transactions.vout[index].scriptpubkey_address {
+                      Text(scriptpubkey_address)
                         .foregroundColor(Color("cinza"))
                         .font(.system(size: 12))
-                      
+                    } else {
+                      Text("Coinbase")
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
                     }
+                    
+                    
+                    Text("\(transactions.vout[index].value / 100000000) BTC")
+                      .foregroundColor(Color("cinza"))
+                      .font(.system(size: 12))
+                    
                   }
-                  
                 }
                 
               }
-            
-          }
+              
+            }
+          
+          
         }
         
       }

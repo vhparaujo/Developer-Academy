@@ -10,10 +10,10 @@ import SwiftUI
 struct EachAddress: View {
   
   @StateObject var address = AddressDataHeader()
+  @StateObject var addressTransactions = AddressDataTransactions()
   
   @Binding var addressSearch: String
   @Binding var abrirModalAddress: Bool
-  
   
   var body: some View {
     
@@ -39,15 +39,19 @@ struct EachAddress: View {
           
         }
         
-        ZStack{
-          RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
-          HStack{
-            Text("Endereço").foregroundColor(Color("cinza")).font(.system(size: 15))
-            
-              Text("\(addressSearch)").foregroundColor(Color("laranja")).font(.system(size: 15))
-            
-          }
-        }.offset(y: 25)
+        Button{
+          UIPasteboard.general.string = "\(addressSearch)"
+        } label: {
+          ZStack{
+            RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
+            HStack{
+              Text("Endereço").foregroundColor(Color("cinza")).font(.system(size: 15))
+              
+                Text("\(addressSearch)").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
+          }.offset(y: 25)
+        }
+        
         
         ForEach(address.addressDatasHeader, id: \.self) { address in
           
@@ -79,17 +83,76 @@ struct EachAddress: View {
           }
         }
         
+        HStack{
+          Text("Transações").foregroundColor(Color("cinza")).font(.system(size: 15))
+          Spacer()
+        }.padding()
+        
+        ForEach(addressTransactions.addressDataTransactions, id: \.self) { addressTransaction in
+          ZStack{
+            RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 121)
+            VStack{
+              
+              HStack{
+                Text("\(String(addressTransaction.txid.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 12))
+                Spacer()
+                
+                
+                if let addressTimeDesembrulhado = addressTransaction.status.block_time, let formattedTime = addressTransaction.status.formatTime(addressTimeDesembrulhado) {
+                  Text(formattedTime)
+                    .foregroundColor(Color("cinza"))
+                    .font(.system(size: 12))
+                }
+                
+              }.padding()
+              
+              
+              HStack{
+                VStack{
+                  ForEach(addressTransaction.vin, id: \.self) { vin in
+                    if let prevoutDesembrulhado: Prevout = vin.prevout {
+                      Text(prevoutDesembrulhado.scriptpubkey_address).foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    } else {
+                      Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    }
+                  }
+                }
+                
+                Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
+                
+                VStack {
+                  ForEach(addressTransaction.vout.indices, id: \.self) { index in
+                    if let scriptpubkey_address_saida = addressTransaction.vout[index].scriptpubkey_address {
+                      Text(scriptpubkey_address_saida)
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
+                    } else {
+                      Text("Coinbase")
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
+                    }
+                    
+                    
+                    Text("\(addressTransaction.vout[index].value / 100000000) BTC")
+                      .foregroundColor(Color("cinza"))
+                      .font(.system(size: 12))
+                    
+                  }
+                }
+                
+              }
+              
+            }
+          }
+        }
+        
       }
     }.onAppear(){
       address.getAddressInfoHeader(addressSearch)
+      addressTransactions.getAddressInfoTransactions(addressSearch)
     }
     
     
-  }
-}
-
-struct EachAddress_Previews: PreviewProvider {
-  static var previews: some View {
-    EachAddress(addressSearch: .constant(""), abrirModalAddress: .constant(true))
   }
 }
