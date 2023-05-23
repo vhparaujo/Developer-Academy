@@ -11,7 +11,7 @@ struct BoxTransactions: View {
   @StateObject var transactionData = TransactionData()
   @State var idTransacaoButton: String = ""
   @State var idTransacaoSearch: String = ""
-  @State var abrirModal: Bool = false
+  @State var abrirModalTransaction: Bool = false
   
   var body: some View {
     VStack{
@@ -24,7 +24,7 @@ struct BoxTransactions: View {
         ForEach(transactionData.transactionDatas, id: \.self) { transactions in
           
           Button{
-            abrirModal.toggle()
+            abrirModalTransaction.toggle()
           } label: {
             ZStack{
               RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 355,height: 71)
@@ -54,14 +54,14 @@ struct BoxTransactions: View {
               }
             }.onTapGesture {
               idTransacaoButton = transactions.txid
-              abrirModal.toggle()
+              abrirModalTransaction.toggle()
             }
           }
           
         }
       }
-    }.sheet(isPresented: $abrirModal) {
-      EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
+    }.sheet(isPresented: $abrirModalTransaction) {
+      EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
         .presentationBackground(Color("azul"))
     }
     

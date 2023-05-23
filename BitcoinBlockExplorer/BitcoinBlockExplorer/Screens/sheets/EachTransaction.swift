@@ -11,7 +11,7 @@ struct EachTransaction: View {
   @StateObject var transaction = EachTransactionData()
   @Binding var idTransacaoButton: String
   @Binding var idTransacaoSearch: String
-  @Binding var abrirModal: Bool
+  @Binding var abrirModalTransaction: Bool
   
   var body: some View {
     VStack{
@@ -23,7 +23,7 @@ struct EachTransaction: View {
           
           Spacer()
           Button{
-            abrirModal.toggle()
+            abrirModalTransaction.toggle()
           } label: {
             Circle()
               .fill()
@@ -49,7 +49,7 @@ struct EachTransaction: View {
         }.offset(y: 25)
         
         ForEach(transaction.eachTransactionDatas, id: \.self) { transactions in
-          
+            
           HStack{
             
             

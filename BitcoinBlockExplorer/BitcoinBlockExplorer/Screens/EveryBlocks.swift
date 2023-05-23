@@ -9,6 +9,9 @@ import SwiftUI
 
 struct EveryBlocks: View {
   
+  @StateObject var blockData = BlockDataEveryBlocks()
+  @StateObject var validateAddresses = Validate()
+  
   @State var timestamp: String = ""
   @State var numberTransactions: Int64 = 0
   @State var blockMiner: String = ""
@@ -16,8 +19,16 @@ struct EveryBlocks: View {
   @State var blockSize: Double = 0
   @State var heightBlock: Int = 0
   @State var hashBlock: String = ""
-  @StateObject var blockData = BlockDataEveryBlocks()
+  
+  // using the search
+  @State var addressSearch: String = ""
+  @State var idTransacaoSearch: String = ""
+  @State var abrirModalAddress: Bool = false
+  @State var abrirModalTransaction: Bool = false
   @State var abrirModal: Bool = false
+  @State var idTransacaoButton: String = ""
+  @State var searchText = ""
+  
   let colunas = [GridItem(spacing: 5), GridItem(spacing: 5)]
   
   var body: some View {
@@ -60,15 +71,37 @@ struct EveryBlocks: View {
           }
           
         }
-      }
-      //      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
-      .padding()
+      }.padding()
       
+      // sheet of eachBlock
       .sheet(isPresented: $abrirModal) {
         EachBlock(timestamp: $timestamp,numberTransactions: $numberTransactions, blockMiner: $blockMiner, medianFee: $medianFee, blockSize: $blockSize, hashBlock: $hashBlock, heightBlock: $heightBlock, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
           .presentationBackground(Color("azul"))
       }
       
+      // using the searchable and calling the .sheet EachTransaction here to make possible use the search too in this view
+      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
+      }
+      .onSubmit(of: .search) {
+        //print(idTransacaoSearch) teste
+        if validateAddresses.isValidAddress(searchText){
+          addressSearch = searchText
+          abrirModalAddress.toggle()
+        } else {
+          idTransacaoSearch = searchText
+          abrirModalTransaction.toggle()
+        }
+
+      }
+      .sheet(isPresented: $abrirModalAddress ) {
+        EachAddress(addressSearch: $addressSearch, abrirModalAddress: $abrirModalAddress).presentationDetents([.height(650), .fraction(0.90)])
+          .presentationBackground(Color("azul"))
+      }
+      .sheet(isPresented: $abrirModalTransaction) {
+        EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
+          .presentationBackground(Color("azul"))
+      }
+
       .onAppear {
         blockData.fetch()
       }

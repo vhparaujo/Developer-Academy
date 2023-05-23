@@ -46,7 +46,7 @@ struct EachBlock: View{
             RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
             HStack{
               Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
-              
+              Text("\(heightBlock)").foregroundColor(Color("cinza")).font(.system(size: 15))
             }
           }
           

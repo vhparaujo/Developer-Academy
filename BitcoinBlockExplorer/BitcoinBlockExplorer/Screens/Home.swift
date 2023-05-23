@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct Home: View {
+  @StateObject var validateAddresses = Validate()
   @StateObject var feeData = FeeData()
+  @State var addressSearch: String = ""
+  @State var idTransacaoSearch: String = ""
+  @State var abrirModalAddress: Bool = false
+  @State var abrirModalTransaction: Bool = false
+  @State var idTransacaoButton: String = ""
   @State var searchText = ""
   
   var body: some View {
@@ -65,11 +71,33 @@ struct Home: View {
           
         }
       }
-//      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações")
       .padding()
       .onAppear {
         feeData.fetch()
       }
+      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
+      }
+      
+      .onSubmit(of: .search) {
+        //print(idTransacaoSearch) teste
+        if validateAddresses.isValidAddress(searchText){
+          addressSearch = searchText
+          abrirModalAddress.toggle()
+        } else {
+          idTransacaoSearch = searchText
+          abrirModalTransaction.toggle()
+        }
+        
+      }
+      .sheet(isPresented: $abrirModalAddress ) {
+        EachAddress(addressSearch: $addressSearch, abrirModalAddress: $abrirModalAddress).presentationDetents([.height(650), .fraction(0.90)])
+          .presentationBackground(Color("azul"))
+      }
+      .sheet(isPresented: $abrirModalTransaction) {
+        EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
+          .presentationBackground(Color("azul"))
+      }
+      
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
