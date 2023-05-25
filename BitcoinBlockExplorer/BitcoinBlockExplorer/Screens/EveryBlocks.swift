@@ -37,7 +37,7 @@ struct EveryBlocks: View {
         ScrollView{
           
           HStack {
-            Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 17))
+            Text("Bloco").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
             Spacer()
           }.padding()
           LazyVGrid(columns: colunas, spacing: 20) {
@@ -69,9 +69,8 @@ struct EveryBlocks: View {
               }
             }
           }
-          
         }
-      }.padding()
+      }
       
       // sheet of eachBlock
       .sheet(isPresented: $abrirModal) {
@@ -112,11 +111,13 @@ struct EveryBlocks: View {
           Image("bitcoin").resizable().frame(width: 30, height: 30)
         }
         ToolbarItem(placement: .principal) {
-          Text("Bitcoin Blockchain Explorer").foregroundColor(Color("laranja")).font(.system(size: 20))
+          Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))
         }
       }
+      .toolbarBackground(Color("azul"), for: .navigationBar)
       .background(Color("azul"))
     }
+    
   }
 }
 

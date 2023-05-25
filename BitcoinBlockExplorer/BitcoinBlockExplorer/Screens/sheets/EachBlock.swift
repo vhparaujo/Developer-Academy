@@ -25,7 +25,6 @@ struct EachBlock: View{
         HStack{
           Spacer()
           Text("Bloco").foregroundColor(Color("cinza")).offset(x: 15, y: 15)
-          
           Spacer()
           Button{
             abrirModal.toggle()
@@ -38,7 +37,6 @@ struct EachBlock: View{
                 Text("X").clipShape(Circle()).font(.system(size: 20)).foregroundColor(Color("laranja"))
               }.offset(x: -10, y: 15)
           }
-          
         }
         
         HStack{
@@ -49,124 +47,137 @@ struct EachBlock: View{
               Text("\(heightBlock)").foregroundColor(Color("cinza")).font(.system(size: 15))
             }
           }
-          
           Spacer()
         }.padding()
         
         Button{
           UIPasteboard.general.string = "\(hashBlock)"
         } label: {
-          ZStack{
-            RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 40)
-            HStack{
-              Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15))
-              Text("\(String(hashBlock.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+          RoundedRectangle(cornerRadius: 7)
+            .fill()
+            .foregroundColor(Color("caixas"))
+            .frame(width: 358,height: 40)
+            .overlay {
+              HStack{
+                Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15)).padding()
+                Spacer()
+                Text("\(String(hashBlock.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15)).padding()
+              }
             }
-          }
         }
-
-        ZStack{
-          RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 192)
-          VStack{
-            
-            HStack{
-              Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: 30)
-              Spacer()
-              Text("\(timestamp)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
+        
+        RoundedRectangle(cornerRadius: 7)
+          .fill()
+          .foregroundColor(Color("caixas"))
+          .frame(width: 358,height: 175)
+          .overlay {
+            VStack{
+              HStack{
+                Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
+                Spacer()
+                Text("\(timestamp)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
+              }
               
-            }
-            
-            Divider().frame(width: 350)
-            
-            HStack{
-              Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: -68)
-              Text("\(blockSize)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 68)
-            }
-            
-            Divider().frame(width: 350)
-            
-            HStack{
-              Text("Taxa mediana").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: -75)
-              Text("\(medianFee)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: 75)
-            }
-            
-            Divider().frame(width: 350)
-            
-            HStack{
-              Text("Minerador").foregroundColor(Color("cinza")).font(.system(size: 15)).offset(x: 30)
-              Spacer()
-              Text("\(blockMiner)").foregroundColor(Color("laranja")).font(.system(size: 15)).offset(x: -30)
+              Divider().frame(width: 350)
+              
+              HStack{
+                let tamanho = String(format: "%.2f", (blockSize / 1000000))
+                
+                Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
+                Spacer()
+                Text("\(tamanho) MB").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
+              }
+              
+              Divider().frame(width: 350)
+              
+              HStack{
+                Text("Taxa mediana").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
+                Spacer()
+                Text("~\(Int(medianFee)) sat/vB").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
+              }
+              
+              Divider().frame(width: 350)
+              
+              HStack{
+                Text("Minerador").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
+                Spacer()
+                Text("\(blockMiner)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
+              }
             }
             
           }
-          
-          
-        }
         
         HStack{
           Text("\(numberTransactions) transações").foregroundColor(Color("cinza")).font(.system(size: 15))
           Spacer()
-          Image(systemName: "chevron.left").foregroundColor(Color("cinza"))
-          Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
-          
-        }.padding()
+          //          Image(systemName: "chevron.left").foregroundColor(Color("cinza"))
+          //          Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
+        }.padding(.horizontal)
+          .padding(.top)
         
         
         ForEach(blockTransactionData.blockTransactionsData, id: \.self) { blocksT in
-          ZStack{
-            RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 358,height: 121)
-            VStack{
-              
+          
+          // HStack somente para dar o espaco
+          HStack{
+          }.padding(.bottom, 20)
+          
+          RoundedRectangle(cornerRadius: 7)
+            .fill()
+            .foregroundColor(Color("caixas"))
+            .frame(width: 358,height: 40)
+            .overlay {
               HStack{
-                Text("\(String(blocksT.txid.prefix(30)))").foregroundColor(Color("laranja")).font(.system(size: 12))
+                // Id da transacao
+                Text("\(String(blocksT.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
                 Spacer()
-                
-                
+                // data transacao
                 if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
                   Text(formattedTime)
                     .foregroundColor(Color("cinza"))
                     .font(.system(size: 12))
                 }
-                
               }.padding()
-              
-              
-              HStack{
-                VStack{
-                  ForEach(blocksT.vin, id: \.self) { vin in
-                    if let prevoutDesembrulhado: Prevout = vin.prevout {
-                      Text(prevoutDesembrulhado.scriptpubkey_address).foregroundColor(Color("cinza")).font(.system(size: 12))
-                      Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    } else {
-                      Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    }
+            }
+          
+          VStack{
+            HStack{
+              VStack{
+                ForEach(blocksT.vin, id: \.self) { vin in
+                  if let prevoutDesembrulhado: Prevout = vin.prevout {
+                    Text("\(String(prevoutDesembrulhado.scriptpubkey_address.prefix(15)))...").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
+                  } else {
+                    Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
                   }
                 }
-                
-                VStack {
-                  ForEach(blocksT.vout.indices, id: \.self) { index in
-                    if let scriptpubkey_address = blocksT.vout[index].scriptpubkey_address {
-                      Text(scriptpubkey_address)
-                        .foregroundColor(Color("cinza"))
-                        .font(.system(size: 12))
-                    } else {
-                      Text("Coinbase")
-                        .foregroundColor(Color("cinza"))
-                        .font(.system(size: 12))
-                    }
-                    
-                    
-                    Text("\(blocksT.vout[index].value / 100000000) BTC")
+              }
+              Spacer()
+              Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
+              Spacer()
+              VStack {
+                ForEach(blocksT.vout.indices, id: \.self) { index in
+                  if let scriptpubkey_address = blocksT.vout[index].scriptpubkey_address {
+                    Text("\(String(scriptpubkey_address.prefix(15)))...")
                       .foregroundColor(Color("cinza"))
                       .font(.system(size: 12))
-                    
+                  } else {
+                    Text("OP_RETURN")
+                      .foregroundColor(Color("cinza"))
+                      .font(.system(size: 12))
                   }
+                  
+                  Text("\(blocksT.vout[index].value / 100000000) BTC")
+                    .foregroundColor(Color("cinza"))
+                    .font(.system(size: 12))
+                  
                 }
-                
               }
               
-            }
-          }
+            }.padding()
+              .background(Color("caixas")).cornerRadius(7)
+          }.padding(.horizontal)
+          
         }
         
       }

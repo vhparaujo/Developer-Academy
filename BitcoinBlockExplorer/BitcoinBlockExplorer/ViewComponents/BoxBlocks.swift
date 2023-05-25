@@ -22,10 +22,17 @@ struct BoxBlocks: View {
   
   var body: some View {
     VStack{
+      
+      
       HStack {
-        Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 17))
+        Text("Bloco").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
         Spacer()
       }.padding()
+      
+      if blockData.carregando {
+        ProgressView()
+      }
+      
       LazyVGrid(columns: colunas, spacing: 20) {
         ForEach(blockData.blockDatas, id: \.self) { blocks in
           
@@ -70,7 +77,6 @@ struct BoxBlocks: View {
 
 struct BoxBlocks_Previews: PreviewProvider {
   static var previews: some View {
-    BoxBlocks().environment(\.colorScheme, .dark)
-      .environment(\.colorScheme, .light)
+    BoxBlocks()
   }
 }

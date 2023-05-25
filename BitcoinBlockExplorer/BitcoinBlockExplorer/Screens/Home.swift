@@ -21,8 +21,11 @@ struct Home: View {
     NavigationView{
       VStack{
         ScrollView{
-          
-          Text("Taxas de transação").foregroundColor(Color("cinza")).font(.system(size: 17))
+          if feeData.carregando {
+            ProgressView()
+          }
+          Text("Taxas de transação").foregroundColor(Color("cinza")).bold()
+            .font(.system(size: 17))
           ForEach(feeData.fees, id: \.self) { fee in
             
             VStack{
@@ -71,13 +74,12 @@ struct Home: View {
           
         }
       }
-      .padding()
       .onAppear {
         feeData.fetch()
       }
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
       }
-      
+        
       .onSubmit(of: .search) {
         //print(idTransacaoSearch) teste
         if validateAddresses.isValidAddress(searchText){
@@ -104,9 +106,10 @@ struct Home: View {
           Image("bitcoin").resizable().frame(width: 30, height: 30)
         }
         ToolbarItem(placement: .principal) {
-          Text("Bitcoin Blockchain Explorer").foregroundColor(Color("laranja")).font(.system(size: 20))
+          Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))
         }
       }
+      .toolbarBackground(Color("azul"), for: .navigationBar)
       .background(Color("azul"))
     }
     

@@ -16,7 +16,7 @@ struct BoxTransactions: View {
   var body: some View {
     VStack{
       HStack {
-        Text("Transações").foregroundColor(Color("cinza")).font(.system(size: 17))
+        Text("Transações").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
         Spacer()
       }.padding()
       
@@ -60,7 +60,9 @@ struct BoxTransactions: View {
           
         }
       }
-    }.sheet(isPresented: $abrirModalTransaction) {
+    }//.background(Color("azul"))
+    
+    .sheet(isPresented: $abrirModalTransaction) {
       EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
         .presentationBackground(Color("azul"))
     }
@@ -74,7 +76,6 @@ struct BoxTransactions: View {
 
 struct BoxTransactions_Previews: PreviewProvider {
   static var previews: some View {
-    BoxTransactions().environment(\.colorScheme, .dark)
-      .environment(\.colorScheme, .light)
+    BoxTransactions()
   }
 }

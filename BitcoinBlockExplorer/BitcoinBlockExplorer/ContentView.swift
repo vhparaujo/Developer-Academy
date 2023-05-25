@@ -11,21 +11,23 @@ struct ContentView: View {
   
   var body: some View {
 
-      VStack{
         TabView{
           Home().tabItem {
             Label("Home", systemImage: "house")
           }
+          .toolbarBackground(Color("azul"), for: .tabBar)
+          
           EveryBlocks().tabItem {
             Label("Blocos", systemImage: "cube")
           }
+          .toolbarBackground(Color("azul"), for: .tabBar)
+          
           EveryTransactions().tabItem {
             Label("Transações", systemImage: "rectangle.grid.1x2.fill")
           }
+          .toolbarBackground(Color("azul"), for: .tabBar)
           
-        }
-        
-      }.accentColor(Color("laranja"))
+        }.accentColor(Color("laranja"))
     
   }
   

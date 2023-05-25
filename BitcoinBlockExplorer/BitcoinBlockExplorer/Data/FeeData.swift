@@ -9,6 +9,7 @@ import SwiftUI
 
 class FeeData: ObservableObject {
   @Published var fees: [Fee] = []
+  @Published var carregando = false
 
   func fetch() {
     guard let url = URL(string: "https://mempool.space/api/v1/fees/recommended") else {
@@ -20,6 +21,8 @@ class FeeData: ObservableObject {
         return
       }
 
+      self.carregando = true
+      
       do {
         let feesInfo = try JSONDecoder().decode(Fee.self, from: data)
 //        print(feesInfo)
@@ -29,6 +32,8 @@ class FeeData: ObservableObject {
       } catch let error {
         print(error)
       }
+      
+      self.carregando = false
     }
     task.resume()
 
