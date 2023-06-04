@@ -12,15 +12,17 @@ class BlockDataHome: ObservableObject {
   @Published var blockHash: String = ""
   var maxBlockCount: Int = 0
   @Published var carregando = false
+//  @Published var erro: Error? = nil
   
   func fetch(_ maxBlockCount: Int) {
+    
+    self.carregando = true
+    
     guard let url = URL(string: "https://mempool.space/api/v1/blocks/") else { return }
     
     URLSession.shared.dataTask(with: url) { data, _, error in
       guard let data = data, error == nil else { return }
-      
-      self.carregando = true
-      
+    
       do {
         let blockHome = try JSONDecoder().decode([Blocks].self, from: data)
         DispatchQueue.main.async {

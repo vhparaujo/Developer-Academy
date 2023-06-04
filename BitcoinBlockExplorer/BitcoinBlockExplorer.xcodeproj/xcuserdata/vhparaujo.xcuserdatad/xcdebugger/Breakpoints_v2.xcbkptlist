@@ -3,4 +3,467 @@
    uuid = "6FCE86AF-C10E-4A3C-A257-18C1DB945A5B"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FEDC4958-4B66-4E80-AB1C-9EDDE9745C30"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/TransactionData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF43C32D-E835-4AD4-879B-26504E12D6BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/TransactionData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "fetch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFDFF3CE-F81A-4D29-AE84-C97D219F0E41"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/TransactionData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetch()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DFDFF3CE-F81A-4D29-AE84-C97D219F0E41 - 2df84fdbcf1aef0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.TransactionData.fetch() -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/TransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "316">
+               </Location>
+               <Location
+                  uuid = "DFDFF3CE-F81A-4D29-AE84-C97D219F0E41 - 568bd290873830a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.TransactionData.fetch() -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/TransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B0D6126-3E7A-40EC-9572-90403FB08C8F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/TransactionData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetch()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6B0D6126-3E7A-40EC-9572-90403FB08C8F - 568bd290873833d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.TransactionData.fetch() -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/TransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1704">
+               </Location>
+               <Location
+                  uuid = "6B0D6126-3E7A-40EC-9572-90403FB08C8F - 568bd290873833d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.TransactionData.fetch() -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/TransactionData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1740">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D529810-884D-467D-A5B5-6E64A6F04812"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "1D529810-884D-467D-A5B5-6E64A6F04812 - 8913e0e008a8d61b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0 in BitcoinBlockExplorer.EveryTransactions.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "1D529810-884D-467D-A5B5-6E64A6F04812 - 8913e0e008a8d69f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0 in BitcoinBlockExplorer.EveryTransactions.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "743DC80C-B3DE-4D84-A050-152ED3BD9611"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "743DC80C-B3DE-4D84-A050-152ED3BD9611 - 8913e0e008a8d6bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0 in BitcoinBlockExplorer.EveryTransactions.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "743DC80C-B3DE-4D84-A050-152ED3BD9611 - 8913e0e008a8d69f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0 in BitcoinBlockExplorer.EveryTransactions.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/EveryTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "874C0D36-7675-48C2-ABB2-A341105F3DF3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Screens/sheets/EachAddress.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "874C0D36-7675-48C2-ABB2-A341105F3DF3 - bec7464d81ca03ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.EachAddress.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/sheets/EachAddress.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "832">
+               </Location>
+               <Location
+                  uuid = "874C0D36-7675-48C2-ABB2-A341105F3DF3 - b380d2ec59d4ce78"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ScrollView&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.offset(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.offset(x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(alignment: SwiftUI.Alignment, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;, SwiftUI.ForEach&lt;Swift.Array&lt;BitcoinBlockExplorer.AddressHeaderModel&gt;, BitcoinBlockExplorer.AddressHeaderModel, &lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(alignment: SwiftUI.Alignment, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.ProgressView&lt;SwiftUI.EmptyView, SwiftUI.EmptyView&gt;, SwiftUI.ForEach&lt;Swift.Array&lt;BitcoinBlockExplorer.Transactions&gt;, BitcoinBlockExplorer.Transactions, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(alignment: SwiftUI.Alignment, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt;&gt;&gt;)&gt;&gt; in BitcoinBlockExplorer.EachAddress.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/sheets/EachAddress.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "936">
+               </Location>
+               <Location
+                  uuid = "874C0D36-7675-48C2-ABB2-A341105F3DF3 - badaafb546cb3e78"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in BitcoinBlockExplorer.EachAddress.body.getter : some"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Screens/sheets/EachAddress.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6866FBD5-4F30-49AF-9036-D564BBCC7B16"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "getAddressInfoTransactions(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6866FBD5-4F30-49AF-9036-D564BBCC7B16 - ce0fa759f73dad9c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  uuid = "6866FBD5-4F30-49AF-9036-D564BBCC7B16 - ce0fa759f73dad9c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "544">
+               </Location>
+               <Location
+                  uuid = "6866FBD5-4F30-49AF-9036-D564BBCC7B16 - ce0fa759f73dad9c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "928">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B435C898-D628-4D9F-872F-D5B202DFAAB3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getAddressInfoTransactions(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B435C898-D628-4D9F-872F-D5B202DFAAB3 - 3d9b202cec7cae29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "B435C898-D628-4D9F-872F-D5B202DFAAB3 - 3d9b202cec7cae29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "564">
+               </Location>
+               <Location
+                  uuid = "B435C898-D628-4D9F-872F-D5B202DFAAB3 - 3d9b202cec7cae29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "848">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF554A36-98E2-4495-B0D0-D74C70370373"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "getAddressInfoTransactions(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EF554A36-98E2-4495-B0D0-D74C70370373 - 3d9b202cec7caee3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1780">
+               </Location>
+               <Location
+                  uuid = "EF554A36-98E2-4495-B0D0-D74C70370373 - 3d9b202cec7caee3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BitcoinBlockExplorer.AddressDataTransactions.getAddressInfoTransactions(Swift.String) -&gt; ()"
+                  moduleName = "BitcoinBlockExplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vhparaujo/Documents/Developer-Academy/BitcoinBlockExplorer/BitcoinBlockExplorer/Data/AddressDataTransactions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "2708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

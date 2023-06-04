@@ -11,9 +11,12 @@ class BlockTransactionsData: ObservableObject {
   
   @Published var blockTransactionsData: [Transactions] = []
   var hashBlock: String = ""
+  @Published var loading = false
   
   func getEachBlocksInfo(_ hashBlock: String) {
-
+    
+    self.loading = true
+    
     guard let url = URL(string: "https://mempool.space/api/block/\(hashBlock)/txs") else { return }
     
     let task = URLSession.shared.dataTask(with: url) {data, _, error in
@@ -31,6 +34,11 @@ class BlockTransactionsData: ObservableObject {
       catch let error {
         print(error)
       }
+      
+      DispatchQueue.main.async {
+        self.loading = false
+      }
+      
     }
     task.resume()
     

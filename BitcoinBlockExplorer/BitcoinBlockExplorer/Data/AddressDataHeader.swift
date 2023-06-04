@@ -10,6 +10,7 @@ import SwiftUI
 class AddressDataHeader: ObservableObject {
   @Published var addressDatasHeader: [AddressHeaderModel] = []
   var address: String = ""
+  @Published var erro: Error? = nil
   
   func getAddressInfoHeader(_ address: String) {
     
@@ -27,9 +28,13 @@ class AddressDataHeader: ObservableObject {
         }
         
       }
-      catch let error {
-        print(error)
+      catch {
+        DispatchQueue.main.async {
+          self.erro = error
+          print(error)
+        }
       }
+
     }
     task.resume()
     

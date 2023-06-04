@@ -9,8 +9,13 @@ import SwiftUI
 
 class BlockDataEveryBlocks: ObservableObject {
   @Published var blockDatas: [Blocks] = []
+  @Published var loading = false
+//  @Published var erro: Error? = any
   
   func fetch() {
+    
+    self.loading = true
+    
     guard let url = URL(string: "https://mempool.space/api/v1/blocks/") else { return }
     
     URLSession.shared.dataTask(with: url) { data, _, error in
@@ -24,6 +29,11 @@ class BlockDataEveryBlocks: ObservableObject {
       } catch {
         print(error)
       }
+      
+      DispatchQueue.main.async {
+        self.loading = false
+      }
+      
     }.resume()
   }
   

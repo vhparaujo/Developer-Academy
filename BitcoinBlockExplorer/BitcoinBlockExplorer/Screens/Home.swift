@@ -21,31 +21,27 @@ struct Home: View {
     NavigationView{
       VStack{
         ScrollView{
-          if feeData.carregando {
-            ProgressView()
-          }
           Text("Taxas de transação").foregroundColor(Color("cinza")).bold()
             .font(.system(size: 17))
           ForEach(feeData.fees, id: \.self) { fee in
             
             VStack{
-              ZStack{
-                RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 343,height: 41)
                 HStack{
-                  Text("Alta Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
-                  Text("Media Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
                   Text("Baixa Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
-                }
-              }
+                  Text("Media Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
+                  Text("Alta Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
+                }.padding()
+                .background(Color("caixas")).cornerRadius(7)
               
               HStack{
                 HStack {
                   Spacer()
                   ZStack{
                     RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 90,height: 47)
-                    Text("\(fee.fastestFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
+                    Text("\(fee.hourFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
                   }
                 }.padding(.horizontal).offset(x: 17)
+                  
                 
                 HStack {
                   ZStack{
@@ -53,17 +49,17 @@ struct Home: View {
                     Text("\(fee.halfHourFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
                   }
                 }.padding(.horizontal).offset(x: -3)
+                  
                 
                 HStack {
                   ZStack{
                     RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 90,height: 47)
-                    Text("\(fee.hourFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
+                    Text("\(fee.fastestFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
                     
                   }.padding(.horizontal).offset(x: -25)
                 }
                 
               }
-              
               
             }
           }
@@ -85,6 +81,7 @@ struct Home: View {
         if validateAddresses.isValidAddress(searchText){
           addressSearch = searchText
           abrirModalAddress.toggle()
+          
         } else {
           idTransacaoSearch = searchText
           abrirModalTransaction.toggle()

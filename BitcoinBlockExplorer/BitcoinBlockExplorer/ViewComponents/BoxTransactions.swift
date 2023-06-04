@@ -20,44 +20,49 @@ struct BoxTransactions: View {
         Spacer()
       }.padding()
       
-      LazyVStack{
-        ForEach(transactionData.transactionDatas, id: \.self) { transactions in
-          
-          Button{
-            abrirModalTransaction.toggle()
-          } label: {
-            ZStack{
-              RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 355,height: 71)
-              HStack{
-                VStack{
-                  Spacer()
-                  Text("ID transação").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
-                  Spacer()
-                  Text("\(String(transactions.txid.prefix(21)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
-                  Spacer()
-                }
-                VStack{
-                  Spacer()
-                  Text("Valor").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
-                  Spacer()
-                  Text("\(transactions.value / 100000000) BTC").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12))
-                  Spacer()
-                }
-                
-                VStack{
-                  Spacer()
-                  Text("Taxa").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -6.5)
-                  Spacer()
-                  Text("\(Int(transactions.fee)) sat").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -14)
-                  
-                }
-              }
-            }.onTapGesture {
-              idTransacaoButton = transactions.txid
+      if transactionData.carregando{
+        ProgressView()
+      } else {
+        
+        LazyVStack{
+          ForEach(transactionData.transactionDatas, id: \.self) { transactions in
+            
+            Button{
               abrirModalTransaction.toggle()
+            } label: {
+              ZStack{
+                RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 355,height: 71)
+                HStack{
+                  VStack{
+                    Spacer()
+                    Text("ID transação").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Spacer()
+                    Text("\(String(transactions.txid.prefix(21)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
+                    Spacer()
+                  }
+                  VStack{
+                    Spacer()
+                    Text("Valor").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Spacer()
+                    Text("\(transactions.value / 100000000) BTC").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Spacer()
+                  }
+                  
+                  VStack{
+                    Spacer()
+                    Text("Taxa").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -6.5)
+                    Spacer()
+                    Text("\(Int(transactions.fee)) sat").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -14)
+                    
+                  }
+                }
+              }.onTapGesture {
+                idTransacaoButton = transactions.txid
+                abrirModalTransaction.toggle()
+              }
             }
+            
           }
-          
         }
       }
     }//.background(Color("azul"))

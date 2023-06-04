@@ -10,8 +10,12 @@ import SwiftUI
 class AddressDataTransactions: ObservableObject {
   @Published var addressDataTransactions: [Transactions] = []
   var address: String = ""
+  @Published var loading = false
+  @Published var erro: Error? = nil
   
   func getAddressInfoTransactions(_ address: String) {
+    
+    self.loading = true
     
     guard let url = URL(string: "https://mempool.space/api/address/\(address)/txs/chain") else { return }
     
@@ -27,12 +31,21 @@ class AddressDataTransactions: ObservableObject {
         }
         
       }
-      catch let error {
-        print(error)
+      
+      catch {
+        DispatchQueue.main.async {
+          self.erro = error
+          print(error)
+        }
       }
+      
+      DispatchQueue.main.async {
+        self.loading = false
+      }
+      
     }
     task.resume()
-
+    
   }
- 
+  
 }

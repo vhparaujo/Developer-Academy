@@ -112,74 +112,84 @@ struct EachBlock: View{
           Spacer()
           //          Image(systemName: "chevron.left").foregroundColor(Color("cinza"))
           //          Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
-        }.padding(.horizontal)
-          .padding(.top)
-        
-        
-        ForEach(blockTransactionData.blockTransactionsData, id: \.self) { blocksT in
-          
-          // HStack somente para dar o espaco
-          HStack{
-          }.padding(.bottom, 20)
-          
-          RoundedRectangle(cornerRadius: 7)
-            .fill()
-            .foregroundColor(Color("caixas"))
-            .frame(width: 358,height: 40)
-            .overlay {
-              HStack{
-                // Id da transacao
-                Text("\(String(blocksT.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
-                Spacer()
-                // data transacao
-                if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
-                  Text(formattedTime)
-                    .foregroundColor(Color("cinza"))
-                    .font(.system(size: 12))
-                }
-              }.padding()
-            }
-          
-          VStack{
-            HStack{
-              VStack{
-                ForEach(blocksT.vin, id: \.self) { vin in
-                  if let prevoutDesembrulhado: Prevout = vin.prevout {
-                    Text("\(String(prevoutDesembrulhado.scriptpubkey_address.prefix(15)))...").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
-                  } else {
-                    Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
-                  }
-                }
-              }
-              Spacer()
-              Image(systemName: "chevron.right").foregroundColor(Color("cinza"))
-              Spacer()
-              VStack {
-                ForEach(blocksT.vout.indices, id: \.self) { index in
-                  if let scriptpubkey_address = blocksT.vout[index].scriptpubkey_address {
-                    Text("\(String(scriptpubkey_address.prefix(15)))...")
-                      .foregroundColor(Color("cinza"))
-                      .font(.system(size: 12))
-                  } else {
-                    Text("OP_RETURN")
-                      .foregroundColor(Color("cinza"))
-                      .font(.system(size: 12))
-                  }
-                  
-                  Text("\(blocksT.vout[index].value / 100000000) BTC")
-                    .foregroundColor(Color("cinza"))
-                    .font(.system(size: 12))
-                  
-                }
-              }
-              
-            }.padding()
-              .background(Color("caixas")).cornerRadius(7)
-          }.padding(.horizontal)
-          
         }
+        .padding(.horizontal)
+        .padding(.top)
         
+        if blockTransactionData.loading{
+          ProgressView()
+        } else {
+          
+          ForEach(blockTransactionData.blockTransactionsData, id: \.self) { blocksT in
+            
+            // HStack somente para dar o espaco
+            HStack{
+            }.padding(.bottom, 20)
+            
+            
+            Button{
+              UIPasteboard.general.string = "\(blocksT.txid)"
+            } label: {
+              RoundedRectangle(cornerRadius: 7)
+                .fill()
+                .foregroundColor(Color("caixas"))
+                .frame(width: 358,height: 40)
+                .overlay {
+                  HStack{
+                    // Id da transacao
+                    Text("\(String(blocksT.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
+                    Spacer()
+                    // data transacao
+                    if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
+                      Text(formattedTime)
+                        .foregroundColor(Color("cinza")).opacity(0.6)
+                        .font(.system(size: 12))
+                    }
+                  }.padding()
+                }
+              
+            }
+            
+            VStack{
+              HStack{
+                VStack{
+                  ForEach(blocksT.vin, id: \.self) { vin in
+                    if let prevoutDesembrulhado: Prevout = vin.prevout {
+                      Text("\(String(prevoutDesembrulhado.scriptpubkey_address.prefix(15)))...").foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(prevoutDesembrulhado.value / 100000000) BTC").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    } else {
+                      Text("Coinbase").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    }
+                  }
+                }
+                Spacer()
+                Image("setinha").foregroundColor(Color("cinza"))
+                Spacer()
+                VStack {
+                  ForEach(blocksT.vout.indices, id: \.self) { index in
+                    if let scriptpubkey_address = blocksT.vout[index].scriptpubkey_address {
+                      Text("\(String(scriptpubkey_address.prefix(15)))...")
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
+                    } else {
+                      Text("OP_RETURN")
+                        .foregroundColor(Color("cinza"))
+                        .font(.system(size: 12))
+                    }
+                    
+                    Text("\(blocksT.vout[index].value / 100000000) BTC")
+                      .foregroundColor(Color("cinza"))
+                      .font(.system(size: 12))
+                    
+                  }
+                }
+                
+              }.padding()
+                .background(Color("caixas")).cornerRadius(7)
+            }.padding(.horizontal)
+            
+          }
+        }
       }
     }.onAppear() {
       blockTransactionData.getEachBlocksInfo(hashBlock)

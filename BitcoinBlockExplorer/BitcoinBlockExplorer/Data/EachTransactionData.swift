@@ -10,10 +10,12 @@ import SwiftUI
 class EachTransactionData: ObservableObject {
   @Published var eachTransactionDatas: [Transactions] = []
   var txidTransaction: String = ""
+  @Published var loading = false
+  @Published var erro: Error? = nil
   
   func getEachTransactionInfo(_ txidTransaction: String) {
     
-    //print(txidTransaction) teste
+    self.loading = true
     
     guard let url = URL(string: "https://mempool.space/api/tx/\(txidTransaction)") else { return }
     
@@ -29,12 +31,24 @@ class EachTransactionData: ObservableObject {
         }
         
       }
-      catch let error {
-        print(error)
+      catch {
+        DispatchQueue.main.async {
+          self.erro = error
+          print(error)
+        }
       }
+      
+      DispatchQueue.main.async {
+        self.loading = false
+      }
+      
     }
     task.resume()
     
+  }
+  
+  func getErro() -> Error? {
+    return self.erro
   }
   
 }

@@ -16,7 +16,7 @@ struct EveryTransactions: View {
   @State var abrirModalTransaction: Bool = false
   @State var abrirModalAddress: Bool = false
   @State var idTransacaoButton: String = ""
-  @State var searchText = ""
+  @State var searchText: String = ""
   
     var body: some View {
       NavigationStack{
@@ -27,18 +27,24 @@ struct EveryTransactions: View {
             
           }
         }
-        
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
         }
         .onSubmit(of: .search) {
           //print(idTransacaoSearch) teste
-          if validateAddresses.isValidAddress(searchText){
-            addressSearch = searchText
-            abrirModalAddress.toggle()
-          } else {
-            idTransacaoSearch = searchText
-            abrirModalTransaction.toggle()
-          }
+          
+//          if transactionData.erro != nil {
+//            abrirModalTransaction = false
+//            abrirModalAddress = false
+//          } else {
+            if validateAddresses.isValidAddress(searchText){
+              addressSearch = searchText
+              abrirModalAddress.toggle()
+              
+            } else {
+              idTransacaoSearch = searchText
+              abrirModalTransaction.toggle()
+            }
+//          }
   
         }
         .sheet(isPresented: $abrirModalAddress ) {

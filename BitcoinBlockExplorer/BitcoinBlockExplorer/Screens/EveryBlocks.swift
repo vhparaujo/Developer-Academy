@@ -37,34 +37,40 @@ struct EveryBlocks: View {
         ScrollView{
           
           HStack {
-            Text("Bloco").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
+            Text("Blocos").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
             Spacer()
           }.padding()
-          LazyVGrid(columns: colunas, spacing: 20) {
-            ForEach(blockData.blockDatas, id: \.self) { blocks in
-              
-              Button{
-                abrirModal.toggle()
-              } label: {
-                ZStack{
-                  RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 160,height: 109)
-                  VStack{
-                    let tamanho = String(format: "%.2f", (blocks.size / 1000000))
-                    Text("\(blocks.height)").foregroundColor(Color("laranja")).font(.system(size: 15))
-                    Text("~\(Int(blocks.extras.medianFee)) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    Text("\(tamanho) MB").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
-                    Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
-                  }
-                }.onTapGesture {
-                  hashBlock = blocks.id
-                  heightBlock = blocks.height
-                  medianFee = blocks.extras.medianFee
-                  blockSize = blocks.size
-                  blockMiner = blocks.extras.pool.name
-                  numberTransactions = blocks.tx_count
-                  timestamp = blocks.formatTimestampWithHour(blocks.timestamp)
+          
+          if blockData.loading {
+            ProgressView()
+          } else {
+            
+            LazyVGrid(columns: colunas, spacing: 20) {
+              ForEach(blockData.blockDatas, id: \.self) { blocks in
+                
+                Button{
                   abrirModal.toggle()
+                } label: {
+                  ZStack{
+                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 160,height: 109)
+                    VStack{
+                      let tamanho = String(format: "%.2f", (blocks.size / 1000000))
+                      Text("\(blocks.height)").foregroundColor(Color("laranja")).font(.system(size: 15))
+                      Text("~\(Int(blocks.extras.medianFee)) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(tamanho) MB").foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
+                      Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    }
+                  }.onTapGesture {
+                    hashBlock = blocks.id
+                    heightBlock = blocks.height
+                    medianFee = blocks.extras.medianFee
+                    blockSize = blocks.size
+                    blockMiner = blocks.extras.pool.name
+                    numberTransactions = blocks.tx_count
+                    timestamp = blocks.formatTimestampWithHour(blocks.timestamp)
+                    abrirModal.toggle()
+                  }
                 }
               }
             }
@@ -82,14 +88,15 @@ struct EveryBlocks: View {
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
       }
       .onSubmit(of: .search) {
-        //print(idTransacaoSearch) teste
-        if validateAddresses.isValidAddress(searchText){
-          addressSearch = searchText
-          abrirModalAddress.toggle()
-        } else {
-          idTransacaoSearch = searchText
-          abrirModalTransaction.toggle()
-        }
+          
+          if validateAddresses.isValidAddress(searchText){
+            addressSearch = searchText
+            abrirModalAddress.toggle()
+            
+          } else {
+            idTransacaoSearch = searchText
+            abrirModalTransaction.toggle()
+          }
 
       }
       .sheet(isPresented: $abrirModalAddress ) {
