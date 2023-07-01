@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='ExemploProtocol'/>
+        <page name='ExtensionInt'/>
+        <page name='ProtocolMusicalInstrument'/>
+        <page name='Value type e Reference type'/>
+        <page name='UInt e tupla'/>
+        <page name='Sobrecarga'/>
+        <page name='enum '/>
+        <page name='ClassOnly'/>
+        <page name='ExtensionsDeExemplo'/>
+        <page name='ProtocolComEnum'/>
+        <page name='Mutating'/>
+        <page name='ExemploSobrecarga'/>
+        <page name='ExemploDoFabio'/>
+    </pages>
+</playground>
