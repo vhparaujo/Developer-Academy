@@ -10,7 +10,6 @@ import SwiftUI
 class BlockDataEveryBlocks: ObservableObject {
   @Published var blockDatas: [Blocks] = []
   @Published var loading = false
-//  @Published var erro: Error? = any
   
   func fetch() {
     

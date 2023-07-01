@@ -14,6 +14,8 @@ struct EachAddress: View {
   @Binding var addressSearch: String
   @Binding var abrirModalAddress: Bool
   
+  var largura = UIScreen.main.bounds.size.width
+  
   var body: some View {
     
     VStack{
@@ -43,17 +45,17 @@ struct EachAddress: View {
           Button{
             UIPasteboard.general.string = "\(addressSearch)"
           } label: {
-            RoundedRectangle(cornerRadius: 7)
-              .fill()
-              .foregroundColor(Color("caixas"))
-              .frame(width: 358,height: 40)
-              .overlay {
-                HStack{
-                  Text("Endereço").foregroundColor(Color("cinza")).font(.system(size: 15)).padding()
-                  Spacer()
-                  Text("\(addressSearch)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding()
-                }
-              }
+            VStack{
+              HStack{
+                Text("Endereço").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Spacer()
+                Text("\(String(addressSearch.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+              }.padding()
+                .background(Color("caixas"))
+                .frame(height: 40)
+                .cornerRadius(7)
+            }.padding(.horizontal)
+            
           }
         } else {
           Text("Não encontrado").font(.system(size: 28)).foregroundColor(Color("cinza"))
@@ -61,35 +63,33 @@ struct EachAddress: View {
         
         ForEach(address.addressDatasHeader, id: \.self) { address in
           
-          RoundedRectangle(cornerRadius: 7)
-            .fill()
-            .foregroundColor(Color("caixas"))
-            .frame(width: 358,height: 130)
-            .overlay {
-              VStack{
-                HStack{
-                  Text("Total Recebido").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                  Spacer()
-                  Text("\(address.chain_stats.funded_txo_sum / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                }
-                
-                Divider().frame(width: 350)
-                
-                HStack{
-                  Text("Total Enviado").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                  Spacer()
-                  Text("\(address.chain_stats.spent_txo_sum / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                }
-                
-                Divider().frame(width: 350)
-                
-                HStack{
-                  Text("Saldo ").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                  Spacer()
-                  Text("\((address.chain_stats.funded_txo_sum - address.chain_stats.spent_txo_sum) / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                }
+          VStack{
+            VStack{
+              HStack{
+                Text("Total Recebido").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Spacer()
+                Text("\(address.chain_stats.funded_txo_sum / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15))
               }
-            }
+              
+              Divider().padding(.horizontal, -largura)
+              
+              HStack{
+                Text("Total Enviado").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Spacer()
+                Text("\(address.chain_stats.spent_txo_sum / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15))
+              }
+              
+              Divider().padding(.horizontal, -largura)
+              
+              HStack{
+                Text("Saldo ").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Spacer()
+                Text("\((address.chain_stats.funded_txo_sum - address.chain_stats.spent_txo_sum) / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15))
+              }
+            }.padding()
+              .background(Color("caixas"))
+              .cornerRadius(7)
+          }.padding(.horizontal)
           
         }
         
@@ -97,41 +97,38 @@ struct EachAddress: View {
           HStack{
             Text("Transações").foregroundColor(Color("cinza")).font(.system(size: 15))
             Spacer()
-          }.padding(.horizontal)
-          .padding(.top)
+          }.padding(.top)
+            .padding(.horizontal)
         } else {
           
         }
-       
+        
         if addressTransactions.loading{
           ProgressView()
         } else {
           
           ForEach(addressTransactions.addressDataTransactions, id: \.self) { addressTransaction in
             
-            HStack{
-            }.padding(.bottom, 20)
-            
             Button{
               UIPasteboard.general.string = "\(addressTransaction.txid)"
             } label: {
-              RoundedRectangle(cornerRadius: 7)
-                .fill()
-                .foregroundColor(Color("caixas"))
-                .frame(width: 358,height: 40)
-                .overlay {
-                  HStack{
-                    
-                    Text("\(String(addressTransaction.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
-                    Spacer()
-                    
-                    if let addressTimeDesembrulhado = addressTransaction.status.block_time, let formattedTime = addressTransaction.status.formatTime(addressTimeDesembrulhado) {
-                      Text(formattedTime)
-                        .foregroundColor(Color("cinza")).opacity(0.6)
-                        .font(.system(size: 12))
-                    }
-                  }.padding()
-                }
+              VStack{
+                HStack{
+                  
+                  Text("\(String(addressTransaction.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
+                  Spacer()
+                  
+                  if let addressTimeDesembrulhado = addressTransaction.status.block_time, let formattedTime = addressTransaction.status.formatTime(addressTimeDesembrulhado) {
+                    Text(formattedTime)
+                      .foregroundColor(Color("cinza")).opacity(0.6)
+                      .font(.system(size: 12))
+                  }
+                }.padding()
+                  .background(Color("caixas"))
+                  .frame(maxHeight: 40)
+                  .cornerRadius(7)
+              }.padding(.horizontal)
+              
             }
             
             VStack{
@@ -163,7 +160,6 @@ struct EachAddress: View {
                         .font(.system(size: 12))
                     }
                     
-                    
                     Text("\(addressTransaction.vout[index].value / 100000000) BTC")
                       .foregroundColor(Color("cinza"))
                       .font(.system(size: 12))
@@ -175,9 +171,13 @@ struct EachAddress: View {
                 .background(Color("caixas")).cornerRadius(7)
             }.padding(.horizontal)
             
+            HStack {
+            }.padding(.bottom, 20)
+            
           }
         }
-      }
+      }.scrollIndicators(.hidden)
+      
     }.onAppear(){
       address.getAddressInfoHeader(addressSearch)
       addressTransactions.getAddressInfoTransactions(addressSearch)
@@ -186,3 +186,4 @@ struct EachAddress: View {
     
   }
 }
+     

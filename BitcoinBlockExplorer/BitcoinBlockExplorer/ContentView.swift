@@ -23,7 +23,9 @@ struct ContentView: View {
       EveryTransactions().tabItem {
         Label("Transações", systemImage: "rectangle.grid.1x2.fill")
       }.toolbarBackground(Color("azul"), for: .tabBar)
-    }.accentColor(Color("laranja"))
+    }
+    .accentColor(Color("laranja"))
+
   }
 }
 

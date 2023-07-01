@@ -18,19 +18,22 @@ struct EveryTransactions: View {
   @State var idTransacaoButton: String = ""
   @State var searchText: String = ""
   
+  var style: UIBlurEffect.Style = .systemMaterial
+  
   var body: some View {
+    
     NavigationStack{
       VStack{
         ScrollView{
           
           BoxTransactions()
           
-        }
+        }.scrollIndicators(.hidden)
       }
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
       }
+      
       .onSubmit(of: .search) {
-        
         if validateAddresses.isValidAddress(searchText){
           addressSearch = searchText
           abrirModalAddress.toggle()
@@ -39,8 +42,8 @@ struct EveryTransactions: View {
           idTransacaoSearch = searchText
           abrirModalTransaction.toggle()
         }
-        
       }
+      
       .sheet(isPresented: $abrirModalAddress ) {
         EachAddress(addressSearch: $addressSearch, abrirModalAddress: $abrirModalAddress).presentationDetents([.height(650), .fraction(0.90)])
           .presentationBackground(Color("azul"))
@@ -49,11 +52,10 @@ struct EveryTransactions: View {
         EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
           .presentationBackground(Color("azul"))
       }
-      
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Image("bitcoin").resizable().frame(width: 30, height: 30)
+          Image("bitcoinIcone").resizable().frame(width: 40, height: 40)
         }
         ToolbarItem(placement: .principal) {
           Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))
@@ -61,15 +63,15 @@ struct EveryTransactions: View {
       }
       .toolbarBackground(Color("azul"), for: .navigationBar)
       .background(Color("azul"))
+
     }
     
   }
+  
 }
 
 struct EveryTransactions_Previews: PreviewProvider {
   static var previews: some View {
-    EveryTransactions().previewDevice("iPhone 14")
-    EveryTransactions().previewDevice("iPhone 14 Pro Max")
-    EveryTransactions().previewDevice("iPhone 8 Plus")
+    EveryTransactions()
   }
 }

@@ -18,6 +18,8 @@ struct EachBlock: View{
   @Binding var abrirModal: Bool
   @StateObject var blockTransactionData = BlockTransactionsData()
   
+  var largura = UIScreen.main.bounds.size.width
+  
   var body: some View {
     VStack{
       ScrollView{
@@ -53,59 +55,57 @@ struct EachBlock: View{
         Button{
           UIPasteboard.general.string = "\(hashBlock)"
         } label: {
-          RoundedRectangle(cornerRadius: 7)
-            .fill()
-            .foregroundColor(Color("caixas"))
-            .frame(width: 358,height: 40)
-            .overlay {
-              HStack{
-                Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15)).padding()
-                Spacer()
-                Text("\(String(hashBlock.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15)).padding()
-              }
-            }
+          
+          VStack{
+            HStack{
+              Text("Hash").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Spacer()
+              Text("\(String(hashBlock.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }.padding()
+              .background(Color("caixas")).frame(height: 40)
+              .cornerRadius(7)
+          }.padding(.horizontal)
+            
         }
         
-        RoundedRectangle(cornerRadius: 7)
-          .fill()
-          .foregroundColor(Color("caixas"))
-          .frame(width: 358,height: 175)
-          .overlay {
-            VStack{
-              HStack{
-                Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                Spacer()
-                Text("\(timestamp)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-              }
-              
-              Divider().frame(width: 350)
-              
-              HStack{
-                let tamanho = String(format: "%.2f", (blockSize / 1000000))
-                
-                Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                Spacer()
-                Text("\(tamanho) MB").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-              }
-              
-              Divider().frame(width: 350)
-              
-              HStack{
-                Text("Taxa mediana").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                Spacer()
-                Text("~\(Int(medianFee)) sat/vB").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-              }
-              
-              Divider().frame(width: 350)
-              
-              HStack{
-                Text("Minerador").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                Spacer()
-                Text("\(blockMiner)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-              }
+        VStack{
+          VStack{
+            HStack{
+              Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Spacer()
+              Text("\(timestamp)").foregroundColor(Color("laranja")).font(.system(size: 15))
             }
             
-          }
+            Divider().padding(.horizontal, -largura)
+            
+            HStack{
+              let tamanho = String(format: "%.2f", (blockSize / 1000000))
+              
+              Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Spacer()
+              Text("\(tamanho) MB").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
+            
+            Divider().padding(.horizontal, -largura)
+            
+            HStack{
+              Text("Taxa mediana").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Spacer()
+              Text("~\(Int(medianFee)) sat/vB").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
+            
+            Divider().padding(.horizontal, -largura)
+            
+            HStack{
+              Text("Minerador").foregroundColor(Color("cinza")).font(.system(size: 15))
+              Spacer()
+              Text("\(blockMiner)").foregroundColor(Color("laranja")).font(.system(size: 15))
+            }
+            
+          }.padding()
+          .background(Color("caixas"))
+          .cornerRadius(7)
+        }.padding(.horizontal)
         
         HStack{
           Text("\(numberTransactions) transações").foregroundColor(Color("cinza")).font(.system(size: 15))
@@ -122,34 +122,27 @@ struct EachBlock: View{
           
           ForEach(blockTransactionData.blockTransactionsData, id: \.self) { blocksT in
             
-            // HStack somente para dar o espaco
-            HStack{
-            }.padding(.bottom, 20)
-            
-            
             Button{
               UIPasteboard.general.string = "\(blocksT.txid)"
             } label: {
-              RoundedRectangle(cornerRadius: 7)
-                .fill()
-                .foregroundColor(Color("caixas"))
-                .frame(width: 358,height: 40)
-                .overlay {
-                  HStack{
-                    // Id da transacao
-                    Text("\(String(blocksT.txid.prefix(30)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
-                    Spacer()
-                    // data transacao
-                    if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
-                      Text(formattedTime)
-                        .foregroundColor(Color("cinza")).opacity(0.6)
-                        .font(.system(size: 12))
-                    }
-                  }.padding()
-                }
+              
+              VStack{
+                HStack{
+                  // Id da transacao
+                  Text("\(blocksT.txid)").foregroundColor(Color("laranja")).font(.system(size: 12)).lineLimit(1)
+                  Spacer()
+                  // data transacao
+                  if let blockTimeDesembrulhado = blocksT.status.block_time, let formattedTime = blocksT.status.formatTime(blockTimeDesembrulhado) {
+                    Text(formattedTime)
+                      .foregroundColor(Color("cinza")).opacity(0.6)
+                      .font(.system(size: 12))
+                  }
+                }.padding()
+                  .background(Color("caixas")).cornerRadius(7)
+              }.padding(.horizontal)
               
             }
-            
+  
             VStack{
               HStack{
                 VStack{
@@ -188,9 +181,13 @@ struct EachBlock: View{
                 .background(Color("caixas")).cornerRadius(7)
             }.padding(.horizontal)
             
+            HStack {
+            }.padding(.bottom, 20)
+            
           }
         }
-      }
+      }.scrollIndicators(.hidden)
+      
     }.onAppear() {
       blockTransactionData.getEachBlocksInfo(hashBlock)
     }

@@ -5,6 +5,7 @@
 //  Created by Victor Hugo Pacheco Araujo on 18/05/23.
 //
 
+//TODO: tornar essa tela totalmente responsiva
 import SwiftUI
 
 struct EachTransaction: View {
@@ -13,7 +14,10 @@ struct EachTransaction: View {
   @Binding var idTransacaoSearch: String
   @Binding var abrirModalTransaction: Bool
   
+  var largura = UIScreen.main.bounds.size.width
+  
   var body: some View {
+    
     VStack{
       ScrollView{
         
@@ -32,7 +36,6 @@ struct EachTransaction: View {
                 Text("X").clipShape(Circle()).font(.system(size: 20)).foregroundColor(Color("laranja"))
               }.offset(x: -10, y: 15)
           }
-          
         }
         
         HStack{
@@ -42,23 +45,24 @@ struct EachTransaction: View {
           Button {
             UIPasteboard.general.string = "\(idTransacaoButton) \(idTransacaoSearch)"
           } label: {
-            RoundedRectangle(cornerRadius: 7)
-              .fill()
-              .foregroundColor(Color("caixas"))
-              .frame(width: 358,height: 40)
-              .overlay {
+            
+            VStack{
                 HStack{
-                  Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
+                  Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
                   Spacer()
                   if(idTransacaoButton == "") {
-                    Text("\(String(idTransacaoSearch.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15)).padding()
+                    Text("\(String(idTransacaoSearch.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
                   } else {
-                    Text("\(String(idTransacaoButton.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15)).padding()
+                    Text("\(String(idTransacaoButton.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
                   }
-                }
-                
-              }
+                }.padding()
+                .background(Color("caixas"))
+                .frame(maxHeight: 40)
+                .cornerRadius(7)
+            }.padding(.horizontal)
+            
           }
+          
         } else {
           Text("Não encontrado").font(.system(size: 28)).foregroundColor(Color("cinza"))
         }
@@ -70,19 +74,16 @@ struct EachTransaction: View {
           ForEach(transaction.eachTransactionDatas, id: \.self) { transactions in
             
             HStack{
-              
-              HStack{
-                if let blockHeightDesembrulhado = transactions.status.block_height {
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
-                    HStack{
-                      Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
-                      Text("\(blockHeightDesembrulhado)").foregroundColor(Color("cinza")).font(.system(size: 15))
-                    }
+
+              if let blockHeightDesembrulhado = transactions.status.block_height {
+                ZStack{
+                  RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
+                  HStack{
+                    Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
+                    Text("\(blockHeightDesembrulhado)").foregroundColor(Color("cinza")).font(.system(size: 15))
                   }
-                } else {
-                  
-                }
+                }.padding()
+              } else {
                 
               }
               
@@ -97,56 +98,52 @@ struct EachTransaction: View {
                     Text("Não confirmada").foregroundColor(Color("cinza")).font(.system(size: 15))
                   }
                 }
-              }
+              }.padding()
               
-            }.padding()
+            }
             
-            
-            RoundedRectangle(cornerRadius: 7)
-              .fill()
-              .foregroundColor(Color("caixas"))
-              .frame(width: 358,height: 130)
-              .overlay {
-                VStack{
-                  
-                  HStack{
-                    Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                    Spacer()
-                    if let blockTimeDesembrulhado = transactions.status.block_time, let formattedTime = transactions.status.formatTime(blockTimeDesembrulhado) {
-                      Text("\(formattedTime)").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                    } else {
-                      Text("Aguardando confirmação").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                    }
+            VStack{
+              VStack{
+                HStack{
+                  Text("Data/Hora").foregroundColor(Color("cinza")).font(.system(size: 15))
+                  Spacer()
+                  if let blockTimeDesembrulhado = transactions.status.block_time, let formattedTime = transactions.status.formatTime(blockTimeDesembrulhado) {
+                    Text("\(formattedTime)").foregroundColor(Color("laranja")).font(.system(size: 15))
+                  } else {
+                    Text("Aguardando confirmação").foregroundColor(Color("laranja")).font(.system(size: 15))
                   }
-                  
-                  Divider().frame(width: 350)
-                  
-                  HStack{
-                    Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                    Spacer()
-                    Text("\(transactions.size) B").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                  }
-                  
-                  Divider().frame(width: 350)
-                  
-                  HStack{
-                    Text("Taxa ").foregroundColor(Color("cinza")).font(.system(size: 15)).padding(.horizontal)
-                    Spacer()
-                    Text("\(transactions.fee / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15)).padding(.horizontal)
-                  }
-                  
                 }
                 
-              }
-            
+                Divider().padding(.horizontal, -largura)
+                
+                HStack{
+                  Text("Tamanho").foregroundColor(Color("cinza")).font(.system(size: 15))
+                  Spacer()
+                  Text("\(transactions.size) B").foregroundColor(Color("laranja")).font(.system(size: 15))
+                }
+                
+                Divider().padding(.horizontal, -largura)
+                
+                HStack{
+                  Text("Taxa ").foregroundColor(Color("cinza")).font(.system(size: 15))
+                  Spacer()
+                  Text("\(transactions.fee / 100000000) BTC").foregroundColor(Color("laranja")).font(.system(size: 15))
+                }
+                
+              }.padding()
+                .background(Color("caixas"))
+                .cornerRadius(7)
+            }.padding(.horizontal)
             
             HStack{
               Text("Entradas e Saídas").foregroundColor(Color("cinza")).font(.system(size: 15))
               Spacer()
-            }.padding()
+            }.padding(.top)
+              .padding(.horizontal)
             
             VStack{
               HStack{
+                
                 VStack{
                   ForEach(transactions.vin, id: \.self) { vin in
                     if let prevoutDesembrulhado: Prevout = vin.prevout {
@@ -187,7 +184,7 @@ struct EachTransaction: View {
             
           }
         }
-      }
+      }.scrollIndicators(.hidden)
     }.onAppear() {
       if idTransacaoButton == "" {
         transaction.getEachTransactionInfo(idTransacaoSearch)

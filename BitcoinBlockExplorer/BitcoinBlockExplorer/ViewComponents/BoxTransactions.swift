@@ -13,36 +13,42 @@ struct BoxTransactions: View {
   @State var idTransacaoSearch: String = ""
   @State var abrirModalTransaction: Bool = false
   
+  var largura = UIScreen.main.bounds.size.width
+  
   var body: some View {
+    
     VStack{
       HStack {
         Text("Transações").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
         Spacer()
-      }.padding()
+      }
       
       if transactionData.carregando{
         ProgressView()
       } else {
         
-        LazyVStack{
+        LazyVStack(spacing: 10){
           ForEach(transactionData.transactionDatas, id: \.self) { transactions in
             
             Button{
               abrirModalTransaction.toggle()
             } label: {
-              ZStack{
-                RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 355,height: 71)
+
                 HStack{
                   VStack{
                     Spacer()
                     Text("ID transação").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
                     Spacer()
-                    Text("\(String(transactions.txid.prefix(21)))...").foregroundColor(Color("laranja")).font(.system(size: 12))
+                    Spacer()
+                    Text("\(transactions.txid)").foregroundColor(Color("laranja")).font(.system(size: 12))
+                      .lineLimit(1)
                     Spacer()
                   }
+                  
                   VStack{
                     Spacer()
                     Text("Valor").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Spacer()
                     Spacer()
                     Text("\(transactions.value / 100000000) BTC").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12))
                     Spacer()
@@ -50,33 +56,38 @@ struct BoxTransactions: View {
                   
                   VStack{
                     Spacer()
-                    Text("Taxa").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -6.5)
+                    Text("Taxa").font(.system(size: 13)).foregroundColor(Color("cinza")).font(.system(size: 12))
                     Spacer()
-                    Text("\(Int(transactions.fee)) sat").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12)).offset(y: -14)
-                    
+                    Spacer()
+                    Text("\(Int(transactions.fee)) sat").font(.system(size: 12)).foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Spacer()
                   }
-                }
-              }.onTapGesture {
+                  
+                }.padding()
+                  .frame(maxWidth: largura, maxHeight: 71)
+                  .background(Color("caixas")).cornerRadius(7)
+                .onTapGesture {
                 idTransacaoButton = transactions.txid
                 abrirModalTransaction.toggle()
               }
+              
             }
             
           }
         }
+        
       }
-    }//.background(Color("azul"))
-    
-    .sheet(isPresented: $abrirModalTransaction) {
-      EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
-        .presentationBackground(Color("azul"))
-    }
-    
-    .onAppear {
-      transactionData.fetch()
-    }
+    }.padding()
+      .sheet(isPresented: $abrirModalTransaction) {
+        EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
+          .presentationBackground(Color("azul"))
+      }
+      .onAppear {
+        transactionData.fetch()
+      }
     
   }
+  
 }
 
 struct BoxTransactions_Previews: PreviewProvider {

@@ -12,7 +12,6 @@ class BlockDataHome: ObservableObject {
   @Published var blockHash: String = ""
   var maxBlockCount: Int = 0
   @Published var carregando = false
-//  @Published var erro: Error? = nil
   
   func fetch(_ maxBlockCount: Int) {
     

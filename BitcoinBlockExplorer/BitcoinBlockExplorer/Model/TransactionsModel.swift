@@ -14,7 +14,6 @@ struct Transactions: Hashable, Codable {
   let vin: [Vin]
   let vout: [Vout]
   let status: Status
-  
 }
 
 struct Vin: Hashable, Codable {

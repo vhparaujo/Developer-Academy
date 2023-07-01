@@ -17,67 +17,67 @@ struct Home: View {
   @State var idTransacaoButton: String = ""
   @State var searchText = ""
   
+  var largura = UIScreen.main.bounds.size.width
+  
   var body: some View {
     NavigationView{
       VStack{
         ScrollView{
-          Text("Taxas de transação").foregroundColor(Color("cinza")).bold()
-            .font(.system(size: 17))
-          ForEach(feeData.fees, id: \.self) { fee in
-            
+          VStack{
             VStack{
-                HStack{
-                  Text("Baixa Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
-                  Text("Media Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
-                  Text("Alta Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
-                }.padding()
-                .background(Color("caixas")).cornerRadius(7)
+              Text("Taxas de transação").foregroundColor(Color("cinza")).bold()
+                .font(.system(size: 17))
               
               HStack{
-                HStack {
-                  Spacer()
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 90,height: 47)
+                Text("Baixa Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
+                Text("Media Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
+                Text("Alta Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
+              }
+              .padding()
+              .frame(maxWidth: largura)
+              .background(Color("caixas"))
+              .cornerRadius(7)
+            }.padding(.horizontal)
+            
+            VStack(alignment: .center){
+              ForEach(feeData.fees, id: \.self) { fee in
+                
+                HStack(spacing: 17){
+                  
+                  HStack{
                     Text("\(fee.hourFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
-                  }
-                }.padding(.horizontal).offset(x: 17)
+                  }.padding()
+                    .background(Color("caixas")).cornerRadius(7)
                   
-                
-                HStack {
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 90,height: 47)
+                  HStack{
                     Text("\(fee.halfHourFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
-                  }
-                }.padding(.horizontal).offset(x: -3)
+                  }.padding()
+                    .background(Color("caixas")).cornerRadius(7)
                   
-                
-                HStack {
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 90,height: 47)
+                  HStack{
                     Text("\(fee.fastestFee) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 13))
-                    
-                  }.padding(.horizontal).offset(x: -25)
+                  }.padding()
+                    .background(Color("caixas")).cornerRadius(7)
                 }
                 
               }
-              
             }
-          }
-          
+            
+          }.padding(.vertical)
           BoxBlocks()
-  
+          
           BoxTransactions()
           
-        }
+        }.scrollIndicators(.hidden)
       }
       .onAppear {
         feeData.fetch()
       }
       .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
       }
-        
+      
       .onSubmit(of: .search) {
-        //print(idTransacaoSearch) teste
+        
         if validateAddresses.isValidAddress(searchText){
           addressSearch = searchText
           abrirModalAddress.toggle()
@@ -100,7 +100,7 @@ struct Home: View {
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Image("bitcoin").resizable().frame(width: 30, height: 30)
+          Image("bitcoinIcone").resizable().frame(width: 40, height: 40)
         }
         ToolbarItem(placement: .principal) {
           Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))

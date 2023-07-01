@@ -29,65 +29,73 @@ struct EveryBlocks: View {
   @State var idTransacaoButton: String = ""
   @State var searchText = ""
   
-  let colunas = [GridItem(spacing: 5), GridItem(spacing: 5)]
+  var largura = UIScreen.main.bounds.size.width
+  
+  let colunas = [GridItem(spacing: 20), GridItem()]
   
   var body: some View {
     NavigationStack{
-      VStack{
-        ScrollView{
+      ScrollView{
+        VStack{
           
           HStack {
             Text("Blocos").foregroundColor(Color("cinza")).bold().font(.system(size: 17))
             Spacer()
-          }.padding()
+          }
           
           if blockData.loading {
             ProgressView()
           } else {
             
-            LazyVGrid(columns: colunas, spacing: 20) {
+            LazyVGrid(columns: colunas, spacing: 15) {
               ForEach(blockData.blockDatas, id: \.self) { blocks in
                 
                 Button{
                   abrirModal.toggle()
                 } label: {
-                  ZStack{
-                    RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 160,height: 109)
-                    VStack{
-                      let tamanho = String(format: "%.2f", (blocks.size / 1000000))
-                      Text("\(blocks.height)").foregroundColor(Color("laranja")).font(.system(size: 15))
-                      Text("~\(Int(blocks.extras.medianFee)) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 12))
-                      Text("\(tamanho) MB").foregroundColor(Color("cinza")).font(.system(size: 12))
-                      Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
-                      Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
+                  
+                  VStack{
+                    let tamanho = String(format: "%.2f", (blocks.size / 1000000))
+                    Text("\(blocks.height)").foregroundColor(Color("laranja")).font(.system(size: 15))
+                    Text("~\(Int(blocks.extras.medianFee)) sat/vB").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Text("\(tamanho) MB").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
+                    Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
+                  }.padding(.vertical)
+                    .frame(maxWidth: largura, maxHeight: 109)
+                    .background(Color("caixas"))
+                    .cornerRadius(7)
+                  
+                  
+                    .onTapGesture {
+                      hashBlock = blocks.id
+                      heightBlock = blocks.height
+                      medianFee = blocks.extras.medianFee
+                      blockSize = blocks.size
+                      blockMiner = blocks.extras.pool.name
+                      numberTransactions = blocks.tx_count
+                      timestamp = blocks.formatTimestampWithHour(blocks.timestamp)
+                      abrirModal.toggle()
                     }
-                  }.onTapGesture {
-                    hashBlock = blocks.id
-                    heightBlock = blocks.height
-                    medianFee = blocks.extras.medianFee
-                    blockSize = blocks.size
-                    blockMiner = blocks.extras.pool.name
-                    numberTransactions = blocks.tx_count
-                    timestamp = blocks.formatTimestampWithHour(blocks.timestamp)
-                    abrirModal.toggle()
-                  }
+                  
                 }
               }
             }
           }
-        }
-      }
+          
+        }.padding()
+      }.scrollIndicators(.hidden)
       
       // sheet of eachBlock
-      .sheet(isPresented: $abrirModal) {
-        EachBlock(timestamp: $timestamp,numberTransactions: $numberTransactions, blockMiner: $blockMiner, medianFee: $medianFee, blockSize: $blockSize, hashBlock: $hashBlock, heightBlock: $heightBlock, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
-          .presentationBackground(Color("azul"))
-      }
+        .sheet(isPresented: $abrirModal) {
+          EachBlock(timestamp: $timestamp,numberTransactions: $numberTransactions, blockMiner: $blockMiner, medianFee: $medianFee, blockSize: $blockSize, hashBlock: $hashBlock, heightBlock: $heightBlock, abrirModal: $abrirModal).presentationDetents([.height(650), .fraction(0.90)])
+            .presentationBackground(Color("azul"))
+        }
       
       // using the searchable and calling the .sheet EachTransaction here to make possible use the search too in this view
-      .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
-      }
-      .onSubmit(of: .search) {
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Blocos, endereços ou transações") {
+        }
+        .onSubmit(of: .search) {
           
           if validateAddresses.isValidAddress(searchText){
             addressSearch = searchText
@@ -97,32 +105,32 @@ struct EveryBlocks: View {
             idTransacaoSearch = searchText
             abrirModalTransaction.toggle()
           }
-
-      }
-      .sheet(isPresented: $abrirModalAddress ) {
-        EachAddress(addressSearch: $addressSearch, abrirModalAddress: $abrirModalAddress).presentationDetents([.height(650), .fraction(0.90)])
-          .presentationBackground(Color("azul"))
-      }
-      .sheet(isPresented: $abrirModalTransaction) {
-        EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
-          .presentationBackground(Color("azul"))
-      }
-
-      .onAppear {
-        blockData.fetch()
-      }
+          
+        }
+        .sheet(isPresented: $abrirModalAddress ) {
+          EachAddress(addressSearch: $addressSearch, abrirModalAddress: $abrirModalAddress).presentationDetents([.height(650), .fraction(0.90)])
+            .presentationBackground(Color("azul"))
+        }
+        .sheet(isPresented: $abrirModalTransaction) {
+          EachTransaction(idTransacaoButton: $idTransacaoButton, idTransacaoSearch: $idTransacaoSearch, abrirModalTransaction: $abrirModalTransaction).presentationDetents([.height(650), .fraction(0.90)])
+            .presentationBackground(Color("azul"))
+        }
       
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Image("bitcoin").resizable().frame(width: 30, height: 30)
+        .onAppear {
+          blockData.fetch()
         }
-        ToolbarItem(placement: .principal) {
-          Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))
+      
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Image("bitcoinIcone").resizable().frame(width: 40, height: 40)
+          }
+          ToolbarItem(placement: .principal) {
+            Text("Bitcoin Block Explorer").foregroundColor(Color("laranja")).bold().font(.system(size: 20))
+          }
         }
-      }
-      .toolbarBackground(Color("azul"), for: .navigationBar)
-      .background(Color("azul"))
+        .toolbarBackground(Color("azul"), for: .navigationBar)
+        .background(Color("azul"))
     }
     
   }
