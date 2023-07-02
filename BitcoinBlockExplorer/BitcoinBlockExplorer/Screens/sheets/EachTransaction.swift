@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EachTransaction: View {
   @StateObject var transaction = EachTransactionData()
+  @StateObject var lastBlock = LastBlockData()
   @Binding var idTransacaoButton: String
   @Binding var idTransacaoSearch: String
   @Binding var abrirModalTransaction: Bool
@@ -47,15 +48,15 @@ struct EachTransaction: View {
           } label: {
             
             VStack{
-                HStack{
-                  Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
-                  Spacer()
-                  if(idTransacaoButton == "") {
-                    Text("\(String(idTransacaoSearch.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
-                  } else {
-                    Text("\(String(idTransacaoButton.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
-                  }
-                }.padding()
+              HStack{
+                Text("Transação").foregroundColor(Color("cinza")).font(.system(size: 15))
+                Spacer()
+                if(idTransacaoButton == "") {
+                  Text("\(String(idTransacaoSearch.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+                } else {
+                  Text("\(String(idTransacaoButton.prefix(25)))...").foregroundColor(Color("laranja")).font(.system(size: 15))
+                }
+              }.padding()
                 .background(Color("caixas"))
                 .frame(maxHeight: 40)
                 .cornerRadius(7)
@@ -74,10 +75,10 @@ struct EachTransaction: View {
           ForEach(transaction.eachTransactionDatas, id: \.self) { transactions in
             
             HStack{
-
+              
               if let blockHeightDesembrulhado = transactions.status.block_height {
                 ZStack{
-                  RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
+                  RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 135, height: 40)
                   HStack{
                     Text("Bloco").foregroundColor(Color("cinza")).font(.system(size: 15))
                     Text("\(blockHeightDesembrulhado)").foregroundColor(Color("cinza")).font(.system(size: 15))
@@ -90,10 +91,12 @@ struct EachTransaction: View {
               Spacer()
               
               ZStack{
-                RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 147,height: 40)
+                RoundedRectangle(cornerRadius: 7).foregroundColor(Color("caixas")).frame(width: 170, height: 40)
                 HStack{
-                  if(transactions.status.confirmed == true) {
-                    Text("Confirmada").foregroundColor(Color("cinza")).font(.system(size: 15))
+                  if(transactions.status.confirmed) {
+                    let confirmacoes = lastBlock.lastBlock - transactions.status.block_height! + 1
+                    let mensagem = confirmacoes > 1 ? "confirmações" : "confirmação"
+                    Text("\(String(confirmacoes)) \(mensagem)").foregroundColor(Color("cinza")).font(.system(size: 15))
                   } else {
                     Text("Não confirmada").foregroundColor(Color("cinza")).font(.system(size: 15))
                   }
@@ -192,6 +195,8 @@ struct EachTransaction: View {
       } else {
         transaction.getEachTransactionInfo(idTransacaoButton)
       }
+      
+      lastBlock.getLastBlock()
       
     }
     

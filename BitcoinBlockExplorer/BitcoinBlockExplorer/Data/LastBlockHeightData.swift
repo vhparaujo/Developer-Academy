@@ -8,7 +8,7 @@
 import SwiftUI
 
 class LastBlockData: ObservableObject {
-  @Published var lastBlock: [LastBlockHeight] = []
+  @Published var lastBlock: Int64 = 0
   
   func getLastBlock() {
     guard let url = URL(string: "https://mempool.space/api/blocks/tip/height") else {
@@ -21,9 +21,9 @@ class LastBlockData: ObservableObject {
       }
       
       do {
-        let lastBlockInfo = try JSONDecoder().decode(LastBlockHeight.self, from: data)
+        let lastBlockInfo = try JSONDecoder().decode(Int64.self, from: data)
         DispatchQueue.main.async {
-          self.lastBlock = [lastBlockInfo]
+          self.lastBlock = lastBlockInfo
         }
       } catch let error {
         print(error)
