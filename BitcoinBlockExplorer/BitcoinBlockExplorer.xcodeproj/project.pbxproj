@@ -12,6 +12,8 @@
 		9B1243872A166AC000B9A4AF /* EachTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1243862A166AC000B9A4AF /* EachTransaction.swift */; };
 		9B12438B2A16BD6C00B9A4AF /* TransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12438A2A16BD6C00B9A4AF /* TransactionsModel.swift */; };
 		9B12438D2A16C11C00B9A4AF /* BlockTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12438C2A16C11C00B9A4AF /* BlockTransactionData.swift */; };
+		9B23E5DD2A51E699007045A6 /* LastBlockHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23E5DC2A51E699007045A6 /* LastBlockHeight.swift */; };
+		9B23E5DF2A51E6F9007045A6 /* LastBlockHeightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23E5DE2A51E6F9007045A6 /* LastBlockHeightData.swift */; };
 		9B27E7162A12A8D000E8036E /* FeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B27E7152A12A8D000E8036E /* FeeModel.swift */; };
 		9B2BC8E22A12C54700735A8D /* BlockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BC8E12A12C54700735A8D /* BlockModel.swift */; };
 		9B2BC8E52A12D1B500735A8D /* FeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BC8E42A12D1B500735A8D /* FeeData.swift */; };
@@ -41,6 +43,8 @@
 		9B1243862A166AC000B9A4AF /* EachTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTransaction.swift; sourceTree = "<group>"; };
 		9B12438A2A16BD6C00B9A4AF /* TransactionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsModel.swift; sourceTree = "<group>"; };
 		9B12438C2A16C11C00B9A4AF /* BlockTransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTransactionData.swift; sourceTree = "<group>"; };
+		9B23E5DC2A51E699007045A6 /* LastBlockHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastBlockHeight.swift; sourceTree = "<group>"; };
+		9B23E5DE2A51E6F9007045A6 /* LastBlockHeightData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastBlockHeightData.swift; sourceTree = "<group>"; };
 		9B27E7152A12A8D000E8036E /* FeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeModel.swift; sourceTree = "<group>"; };
 		9B2BC8E12A12C54700735A8D /* BlockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModel.swift; sourceTree = "<group>"; };
 		9B2BC8E42A12D1B500735A8D /* FeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeData.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				9B2BC8F52A1548F900735A8D /* EveryTransactionsModel.swift */,
 				9B12438A2A16BD6C00B9A4AF /* TransactionsModel.swift */,
 				9B4372702A1CE88900DFE211 /* AddressHeaderModel.swift */,
+				9B23E5DC2A51E699007045A6 /* LastBlockHeight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				9B4BE3632A17BBA000050C33 /* EachTransactionData.swift */,
 				9B43726E2A1CE66000DFE211 /* AddressDataHeader.swift */,
 				9B4372752A1D2C1800DFE211 /* AddressDataTransactions.swift */,
+				9B23E5DE2A51E6F9007045A6 /* LastBlockHeightData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B23E5DF2A51E6F9007045A6 /* LastBlockHeightData.swift in Sources */,
 				9B2BC8F82A1555BC00735A8D /* BlockDataEveryBlocks.swift in Sources */,
 				9B2BC8F62A1548F900735A8D /* EveryTransactionsModel.swift in Sources */,
 				9B1243852A165BF700B9A4AF /* BoxTransactions.swift in Sources */,
@@ -262,6 +269,7 @@
 				9BC226142A0C68CA0069FDEB /* ContentView.swift in Sources */,
 				9B4372742A1CFD7600DFE211 /* ValidateSearch.swift in Sources */,
 				9B1243872A166AC000B9A4AF /* EachTransaction.swift in Sources */,
+				9B23E5DD2A51E699007045A6 /* LastBlockHeight.swift in Sources */,
 				9B2BC8F02A13F72A00735A8D /* EveryBlocks.swift in Sources */,
 				9B2BC8F22A13FE5900735A8D /* Home.swift in Sources */,
 				9B27E7162A12A8D000E8036E /* FeeModel.swift in Sources */,

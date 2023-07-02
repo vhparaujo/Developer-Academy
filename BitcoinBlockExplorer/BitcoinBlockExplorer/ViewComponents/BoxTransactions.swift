@@ -12,9 +12,7 @@ struct BoxTransactions: View {
   @State var idTransacaoButton: String = ""
   @State var idTransacaoSearch: String = ""
   @State var abrirModalTransaction: Bool = false
-  
-  var largura = UIScreen.main.bounds.size.width
-  
+
   var body: some View {
     
     VStack{
@@ -64,7 +62,7 @@ struct BoxTransactions: View {
                   }
                   
                 }.padding()
-                  .frame(maxWidth: largura, maxHeight: 71)
+                .frame(maxWidth: .infinity, maxHeight: 71)
                   .background(Color("caixas")).cornerRadius(7)
                 .onTapGesture {
                 idTransacaoButton = transactions.txid

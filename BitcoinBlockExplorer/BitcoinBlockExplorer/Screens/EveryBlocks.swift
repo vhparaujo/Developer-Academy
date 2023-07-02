@@ -29,8 +29,6 @@ struct EveryBlocks: View {
   @State var idTransacaoButton: String = ""
   @State var searchText = ""
   
-  var largura = UIScreen.main.bounds.size.width
-  
   let colunas = [GridItem(spacing: 20), GridItem()]
   
   var body: some View {
@@ -62,10 +60,9 @@ struct EveryBlocks: View {
                     Text("\(blocks.tx_count) transações").foregroundColor(Color("cinza")).font(.system(size: 12))
                     Text("\(blocks.formatTimestamp(blocks.timestamp))").foregroundColor(Color("cinza")).font(.system(size: 12))
                   }.padding(.vertical)
-                    .frame(maxWidth: largura, maxHeight: 109)
+                    .frame(maxWidth: .infinity, maxHeight: 109)
                     .background(Color("caixas"))
                     .cornerRadius(7)
-                  
                   
                     .onTapGesture {
                       hashBlock = blocks.id

@@ -18,8 +18,6 @@ struct EveryTransactions: View {
   @State var idTransacaoButton: String = ""
   @State var searchText: String = ""
   
-  var style: UIBlurEffect.Style = .systemMaterial
-  
   var body: some View {
     
     NavigationStack{

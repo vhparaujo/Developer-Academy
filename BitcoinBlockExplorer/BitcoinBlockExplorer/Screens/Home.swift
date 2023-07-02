@@ -17,8 +17,6 @@ struct Home: View {
   @State var idTransacaoButton: String = ""
   @State var searchText = ""
   
-  var largura = UIScreen.main.bounds.size.width
-  
   var body: some View {
     NavigationView{
       VStack{
@@ -34,7 +32,7 @@ struct Home: View {
                 Text("Alta Prioridade").foregroundColor(Color("cinza")).font(.system(size: 13))
               }
               .padding()
-              .frame(maxWidth: largura)
+              .frame(maxWidth: .infinity)
               .background(Color("caixas"))
               .cornerRadius(7)
             }.padding(.horizontal)
